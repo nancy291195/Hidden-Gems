@@ -4,7 +4,18 @@ import { Send, Sparkles, User, Bot, Loader2 } from "lucide-react";
 import { GoogleGenAI } from "@google/genai";
 import { SYSTEM_PROMPT } from "../constants";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+let aiInstance: GoogleGenAI | null = null;
+
+function getAI() {
+  if (!aiInstance) {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      throw new Error("GEMINI_API_KEY is missing. Please set it in your environment variables.");
+    }
+    aiInstance = new GoogleGenAI({ apiKey });
+  }
+  return aiInstance;
+}
 
 interface Message {
   role: "user" | "assistant";
@@ -20,6 +31,7 @@ export default function Chat() {
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -35,8 +47,10 @@ export default function Chat() {
     setInput("");
     setMessages(prev => [...prev, { role: "user", content: userMessage }]);
     setIsLoading(true);
+    setError(null);
 
     try {
+      const ai = getAI();
       const chat = ai.chats.create({
         model: "gemini-3-flash-preview",
         config: {
@@ -59,6 +73,8 @@ export default function Chat() {
       setMessages(prev => [...prev, { role: "assistant", content: assistantContent }]);
     } catch (error) {
       console.error("Chat error:", error);
+      const errorMessage = error instanceof Error ? error.message : "I encountered an error while searching our guide database.";
+      setError(errorMessage);
       setMessages(prev => [...prev, { role: "assistant", content: "I encountered an error while searching our guide database. Please try again in a moment." }]);
     } finally {
       setIsLoading(false);
@@ -83,6 +99,11 @@ export default function Chat() {
         ref={scrollRef}
         className="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth"
       >
+        {error && (
+          <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 border border-red-100" role="alert">
+            <span className="font-medium">Error:</span> {error}
+          </div>
+        )}
         <AnimatePresence initial={false}>
           {messages.map((msg, i) => (
             <motion.div
