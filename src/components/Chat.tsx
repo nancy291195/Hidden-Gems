@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Send, Sparkles, User, Bot, Loader2 } from "lucide-react";
+import { Send, Sparkles, User, Bot, Loader2, ArrowRight, Star } from "lucide-react";
+import { Link } from "react-router-dom";
 import { GoogleGenAI } from "@google/genai";
-import { SYSTEM_PROMPT } from "../constants";
+import { SYSTEM_PROMPT, GUIDES } from "../constants";
 
 let aiInstance: GoogleGenAI | null = null;
 
@@ -20,7 +21,16 @@ function getAI() {
 interface Message {
   role: "user" | "assistant";
   content: string;
+  matchedGuideId?: string;
 }
+
+const SUGGESTED_PROMPTS = [
+  "Hidden gems in Lebanon",
+  "Off the beaten path in Japan",
+  "Ancient ruins no one visits",
+  "Most unique guide on the platform",
+  "I want to sleep somewhere with no WiFi"
+];
 
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([
@@ -40,10 +50,10 @@ export default function Chat() {
     }
   }, [messages]);
 
-  const handleSend = async () => {
-    if (!input.trim() || isLoading) return;
+  const handleSend = async (text?: string) => {
+    const userMessage = text || input.trim();
+    if (!userMessage || isLoading) return;
 
-    const userMessage = input.trim();
     setInput("");
     setMessages(prev => [...prev, { role: "user", content: userMessage }]);
     setIsLoading(true);
@@ -51,31 +61,58 @@ export default function Chat() {
 
     try {
       const ai = getAI();
-      const chat = ai.chats.create({
+      
+      // Gemini history must alternate User/Model and start with User.
+      // We manually construct the contents array including the current message.
+      const contents = [
+        ...messages.slice(1).map(m => ({
+          role: m.role === "assistant" ? "model" : "user",
+          parts: [{ text: m.content }]
+        })),
+        { role: "user", parts: [{ text: userMessage }] }
+      ];
+
+      const response = await ai.models.generateContent({
         model: "gemini-3-flash-preview",
+        contents,
         config: {
           systemInstruction: SYSTEM_PROMPT,
         }
       });
+      
+      let assistantContent = "";
+      try {
+        assistantContent = response.text || "";
+      } catch (e) {
+        console.error("Failed to get text from response:", e);
+        assistantContent = "I'm sorry, I can't discuss that specific topic. Let's talk about your travel plans instead!";
+      }
 
-      // Convert history to Gemini format
-      const history = messages.map(m => ({
-        role: m.role === "assistant" ? "model" : "user",
-        parts: [{ text: m.content }]
-      }));
+      if (!assistantContent) {
+        throw new Error("Empty response from AI");
+      }
 
-      const response = await chat.sendMessage({
-        message: userMessage,
-        // history // Note: sendMessage in this SDK version might handle history differently or we use chat.sendMessage
-      });
+      // Extract match tag
+      const matchMatch = assistantContent.match(/\[MATCH:(\w+)\]/);
+      const matchedGuideId = matchMatch ? matchMatch[1] : undefined;
+      const cleanContent = assistantContent.replace(/\[MATCH:\w+\]/, "").trim();
 
-      const assistantContent = response.text || "I'm sorry, I couldn't process that. Could you try rephrasing?";
-      setMessages(prev => [...prev, { role: "assistant", content: assistantContent }]);
+      setMessages(prev => [...prev, { 
+        role: "assistant", 
+        content: cleanContent,
+        matchedGuideId 
+      }]);
     } catch (error) {
       console.error("Chat error:", error);
       const errorMessage = error instanceof Error ? error.message : "I encountered an error while searching our guide database.";
       setError(errorMessage);
-      setMessages(prev => [...prev, { role: "assistant", content: "I encountered an error while searching our guide database. Please try again in a moment." }]);
+      let displayMessage = `I encountered an error: ${errorMessage}. Please try again in a moment.`;
+      if (errorMessage.includes("API_KEY") || errorMessage.includes("API key")) {
+        displayMessage = "The Gemini API key is missing or invalid. Please ensure it is correctly set in your environment variables.";
+      } else if (errorMessage.includes("quota") || errorMessage.includes("429")) {
+        displayMessage = "We've reached the AI's capacity for a moment. Please wait a few seconds and try again.";
+      }
+      setMessages(prev => [...prev, { role: "assistant", content: displayMessage }]);
     } finally {
       setIsLoading(false);
     }
@@ -110,7 +147,7 @@ export default function Chat() {
               key={i}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+              className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"}`}
             >
               <div className={`flex gap-3 max-w-[85%] ${msg.role === "user" ? "flex-row-reverse" : ""}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
@@ -126,6 +163,46 @@ export default function Chat() {
                   {msg.content}
                 </div>
               </div>
+
+              {msg.matchedGuideId && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="mt-4 ml-11 w-full max-w-sm"
+                >
+                  {(() => {
+                    const guide = GUIDES.find(g => g.id === msg.matchedGuideId);
+                    if (!guide) return null;
+                    return (
+                      <div className="glass-panel p-4 rounded-3xl border-brand-gold/30 shadow-lg bg-white/50">
+                        <div className="flex gap-4 mb-4">
+                          <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0">
+                            <img src={guide.image} alt={guide.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="text-xl">{guide.flag}</span>
+                              <h4 className="font-serif font-bold">{guide.name}</h4>
+                            </div>
+                            <div className="flex items-center gap-1 text-xs text-brand-ink/60">
+                              <Star className="w-3 h-3 fill-brand-gold text-brand-gold" />
+                              <span className="font-bold">{guide.rating}</span>
+                              <span className="mx-1">•</span>
+                              <span>{guide.speciality}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <Link 
+                          to={`/guide/${guide.id}`}
+                          className="w-full py-3 bg-brand-olive text-brand-cream rounded-full text-xs font-bold hover:bg-brand-olive/90 transition-all flex items-center justify-center gap-2"
+                        >
+                          Book this guide <ArrowRight className="w-3 h-3" />
+                        </Link>
+                      </div>
+                    );
+                  })()}
+                </motion.div>
+              )}
             </motion.div>
           ))}
         </AnimatePresence>
@@ -152,6 +229,18 @@ export default function Chat() {
       </div>
 
       <div className="p-6 bg-white/50 border-t border-brand-olive/10">
+        <div className="flex flex-wrap gap-2 mb-4">
+          {SUGGESTED_PROMPTS.map((prompt, i) => (
+            <button
+              key={i}
+              onClick={() => handleSend(prompt)}
+              disabled={isLoading}
+              className="px-3 py-1.5 bg-brand-cream border border-brand-olive/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-brand-ink/60 hover:border-brand-gold hover:text-brand-ink transition-all disabled:opacity-50"
+            >
+              {prompt}
+            </button>
+          ))}
+        </div>
         <div className="relative flex items-center">
           <input
             type="text"
@@ -162,16 +251,13 @@ export default function Chat() {
             className="w-full bg-white border border-brand-olive/20 rounded-full py-4 pl-6 pr-14 text-sm focus:outline-hidden focus:ring-2 focus:ring-brand-olive/20 transition-all"
           />
           <button
-            onClick={handleSend}
+            onClick={() => handleSend()}
             disabled={!input.trim() || isLoading}
             className="absolute right-2 p-3 bg-brand-olive text-white rounded-full hover:bg-brand-olive/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
             <Send className="w-4 h-4" />
           </button>
         </div>
-        <p className="text-[10px] text-center mt-3 text-brand-ink/40 uppercase tracking-widest font-medium">
-          Ask about Japan, Lebanon, Morocco, Georgia, Peru, or Ethiopia
-        </p>
       </div>
     </div>
   );
