@@ -131,7 +131,16 @@ export default function GuideProfile() {
                 transition={{ delay: i * 0.1 }}
                 className="group relative aspect-square rounded-3xl overflow-hidden cursor-default"
               >
-                <div className={`absolute inset-0 ${photo.gradient} transition-transform duration-700 group-hover:scale-110`} />
+                {photo.url ? (
+                  <img 
+                    src={photo.url} 
+                    alt={photo.caption} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    referrerPolicy="no-referrer"
+                  />
+                ) : (
+                  <div className={`absolute inset-0 ${photo.gradient} transition-transform duration-700 group-hover:scale-110`} />
+                )}
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <p className="text-white text-sm font-serif italic leading-snug opacity-0 group-hover:opacity-100 transition-opacity duration-500">

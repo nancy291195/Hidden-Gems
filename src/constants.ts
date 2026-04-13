@@ -16,6 +16,7 @@ export interface Review {
 export interface PhotoPlaceholder {
   caption: string;
   gradient: string;
+  url: string;
 }
 
 export interface Guide {
@@ -67,10 +68,10 @@ export const GUIDES: Guide[] = [
     mapX: 58,
     mapY: 34,
     photos: [
-      { caption: "Dawn light on a waterfall no map has named", gradient: "bg-linear-to-br from-blue-400 to-green-500" },
-      { caption: "The Milky Way over the Iron Oak forest", gradient: "bg-linear-to-br from-indigo-900 to-purple-800" },
-      { caption: "Silent sea caves at the edge of Batroun", gradient: "bg-linear-to-br from-cyan-600 to-blue-800" },
-      { caption: "Mist rolling through the Akkar cedar groves", gradient: "bg-linear-to-br from-slate-400 to-emerald-700" }
+      { caption: "Dawn light on a waterfall no map has named", gradient: "bg-linear-to-br from-blue-400 to-green-500", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091654/baakline-new_miejja.jpg" },
+      { caption: "The Milky Way over the Iron Oak forest", gradient: "bg-linear-to-br from-indigo-900 to-purple-800", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091654/12239979_10206399522081764_4501778728570353190_n_dfru6j.jpg" },
+      { caption: "Silent sea caves at the edge of Batroun", gradient: "bg-linear-to-br from-cyan-600 to-blue-800", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091654/b2_tpupga.jpg" },
+      { caption: "Mist rolling through the Akkar cedar groves", gradient: "bg-linear-to-br from-slate-400 to-emerald-700", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091654/C%C3%A8dre_du_Liban_Barouk_2005_zrijlc.jpg" }
     ],
     tours: [
       { name: "The Akkar Deep Forest Expedition", duration: "10 hours", price: 85, included: ["Transport", "Traditional Lunch", "Photography Tips"] },
@@ -99,15 +100,15 @@ export const GUIDES: Guide[] = [
     toursFrom: 75,
     rating: 4.96,
     reviewsCount: 187,
-    image: "https://picsum.photos/seed/yasmine-guide/800/1000",
+    image: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091653/morocco-desert-tour-800x552_mjyb23.jpg",
     themeColor: "from-orange-600 to-red-800",
     mapX: 46,
     mapY: 38,
     photos: [
-      { caption: "The hidden copper foundries of the deep Medina", gradient: "bg-linear-to-br from-orange-500 to-amber-800" },
-      { caption: "A tea ceremony in a village with no roads", gradient: "bg-linear-to-br from-emerald-500 to-yellow-600" },
-      { caption: "Sunset over the forgotten oases of the Draa", gradient: "bg-linear-to-br from-rose-600 to-indigo-900" },
-      { caption: "Intricate zellige patterns in a private riad", gradient: "bg-linear-to-br from-blue-500 to-teal-400" }
+      { caption: "The hidden copper foundries of the deep Medina", gradient: "bg-linear-to-br from-orange-500 to-amber-800", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091654/ac8842fd-496a-440b-acfb-66a10fbcab55_explore-the-hidden-gems-and-main-sites-of-the-fes-medina_grp8ec.png" },
+      { caption: "A tea ceremony in a village with no roads", gradient: "bg-linear-to-br from-emerald-500 to-yellow-600", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091654/2385_qzrdep.jpg" },
+      { caption: "Sunset over the forgotten oases of the Draa", gradient: "bg-linear-to-br from-rose-600 to-indigo-900", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091653/68ce995abf72d4300ed5846f_Draa_Valley_Morocco_zfztxm.jpg" },
+      { caption: "Intricate zellige patterns in a private riad", gradient: "bg-linear-to-br from-blue-500 to-teal-400", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091653/zellige-morocco-fez-tetouan-mosaic-courtyard-scaled-e1763233745162_yycqhx.jpg" }
     ],
     tours: [
       { name: "The Artisan's Secret Medina", duration: "5 hours", price: 75, included: ["Tea Service", "Workshop Access", "History Talk"] },
@@ -141,10 +142,10 @@ export const GUIDES: Guide[] = [
     mapX: 88,
     mapY: 35,
     photos: [
-      { caption: "Steam rising from a nameless mountain spring", gradient: "bg-linear-to-br from-slate-200 to-blue-400" },
-      { caption: "The last thatched roof in a valley of ghosts", gradient: "bg-linear-to-br from-stone-500 to-emerald-900" },
-      { caption: "Moss-covered Jizo statues on a forgotten trail", gradient: "bg-linear-to-br from-green-600 to-slate-700" },
-      { caption: "Winter silence in the deep Tohoku woods", gradient: "bg-linear-to-br from-white to-slate-300" }
+      { caption: "Steam rising from a nameless mountain spring", gradient: "bg-linear-to-br from-slate-200 to-blue-400", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091653/e1629b9017c5290edd_hellsteaming_alamy_dwii69.jpg" },
+      { caption: "The last thatched roof in a valley of ghosts", gradient: "bg-linear-to-br from-stone-500 to-emerald-900", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091653/shirakawa-go-15_astkiy.jpg" },
+      { caption: "Moss-covered Jizo statues on a forgotten trail", gradient: "bg-linear-to-br from-green-600 to-slate-700", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091653/de6dd22b5fdfdab14869dec1a291f909_s0mcue.png" },
+      { caption: "Winter silence in the deep Tohoku woods", gradient: "bg-linear-to-br from-white to-slate-300", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091653/7_ynjrog.jpg" }
     ],
     tours: [
       { name: "The Samurai Pilgrimage", duration: "3 days", price: 450, included: ["Ryokan Stay", "Traditional Meals", "Gear"] },
@@ -178,10 +179,10 @@ export const GUIDES: Guide[] = [
     mapX: 61,
     mapY: 31,
     photos: [
-      { caption: "Shadows of Svaneti towers at twilight", gradient: "bg-linear-to-br from-slate-700 to-indigo-950" },
-      { caption: "The wild horses of the Tusheti plains", gradient: "bg-linear-to-br from-yellow-600 to-emerald-800" },
-      { caption: "Opening a qvevri buried for thirty years", gradient: "bg-linear-to-br from-orange-900 to-red-950" },
-      { caption: "Glacial peaks reflecting in a mountain tarn", gradient: "bg-linear-to-br from-cyan-200 to-blue-600" }
+      { caption: "Shadows of Svaneti towers at twilight", gradient: "bg-linear-to-br from-slate-700 to-indigo-950", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/936565aebe25858d7b_1273975_10151856021223904_1884326485_o_pbyc6l.jpg" },
+      { caption: "The wild horses of the Tusheti plains", gradient: "bg-linear-to-br from-yellow-600 to-emerald-800", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/Lead-pic-750x430-1_xkd5uv.jpg" },
+      { caption: "Opening a qvevri buried for thirty years", gradient: "bg-linear-to-br from-orange-900 to-red-950", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/Marani-1200-x-475_qnmrzk.jpg" },
+      { caption: "Glacial peaks reflecting in a mountain tarn", gradient: "bg-linear-to-br from-cyan-200 to-blue-600", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/gcSpk2Nd5VPYQqjkc5FHvr_smedium_g3mmzm.jpg" }
     ],
     tours: [
       { name: "Medieval Tower Homestay", duration: "2 days", price: 180, included: ["Tower Stay", "Traditional Feast", "Singing Lesson"] },
@@ -215,10 +216,10 @@ export const GUIDES: Guide[] = [
     mapX: 28,
     mapY: 68,
     photos: [
-      { caption: "An Incan altar hidden by centuries of vines", gradient: "bg-linear-to-br from-emerald-800 to-stone-600" },
-      { caption: "The first light hitting an undocumented peak", gradient: "bg-linear-to-br from-orange-400 to-rose-700" },
-      { caption: "Quechua weavers working with ancient dyes", gradient: "bg-linear-to-br from-pink-600 to-purple-800" },
-      { caption: "The mist rising where the Andes meet the jungle", gradient: "bg-linear-to-br from-teal-500 to-slate-600" }
+      { caption: "An Incan altar hidden by centuries of vines", gradient: "bg-linear-to-br from-emerald-800 to-stone-600", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/qenqo-temple_tm6wly.jpg" },
+      { caption: "The first light hitting an undocumented peak", gradient: "bg-linear-to-br from-orange-400 to-rose-700", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/hq720_peqj8z.jpg" },
+      { caption: "Quechua weavers working with ancient dyes", gradient: "bg-linear-to-br from-pink-600 to-purple-800", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/the-ancient-art-of-fiber-dyeing-in-peru-conts_2_jxmq8u.jpg" },
+      { caption: "The mist rising where the Andes meet the jungle", gradient: "bg-linear-to-br from-teal-500 to-slate-600", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/biodiversidad-de-la-selva-alta-peruana_c2gb5u.jpg" }
     ],
     tours: [
       { name: "The Lost Altar Trek", duration: "7 hours", price: 95, included: ["Lunch", "Archaeology Kit", "Transport"] },
@@ -252,10 +253,10 @@ export const GUIDES: Guide[] = [
     mapX: 59,
     mapY: 52,
     photos: [
-      { caption: "The sheer climb to a 6th-century rock church", gradient: "bg-linear-to-br from-orange-700 to-stone-800" },
-      { caption: "A hidden ceremony in the Omo Valley", gradient: "bg-linear-to-br from-amber-500 to-red-800" },
-      { caption: "The jagged peaks of the Simien at dawn", gradient: "bg-linear-to-br from-slate-400 to-indigo-900" },
-      { caption: "Ancient manuscripts in a mountain monastery", gradient: "bg-linear-to-br from-yellow-600 to-amber-950" }
+      { caption: "The sheer climb to a 6th-century rock church", gradient: "bg-linear-to-br from-orange-700 to-stone-800", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/Maryam-Shewito-exterior-architectural-review-ethiopia-stone_psg5oy.jpg" },
+      { caption: "A hidden ceremony in the Omo Valley", gradient: "bg-linear-to-br from-amber-500 to-red-800", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/Omo-Valley_Gilad-Fiskus_Hidden-Compass-5-scaled-1-2488x1660_rtqu17.jpg" },
+      { caption: "The jagged peaks of the Simien at dawn", gradient: "bg-linear-to-br from-slate-400 to-indigo-900", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/ethiopia-landscape7-TSM03_R_ki2nqu.jpg" },
+      { caption: "Ancient manuscripts in a mountain monastery", gradient: "bg-linear-to-br from-yellow-600 to-amber-950", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/66f635c4-0f6d-4369-9d72-2f244a099f96_1061x585_tn6rvv.jpg" }
     ],
     tours: [
       { name: "Tigray Rock Church Pilgrimage", duration: "10 hours", price: 120, included: ["Permits", "Local Guide", "Lunch"] },
@@ -273,6 +274,7 @@ export interface HiddenGem {
   id: string;
   flag: string;
   gradient: string;
+  url: string;
   description: string;
   country: string;
 }
@@ -282,6 +284,7 @@ export const HIDDEN_GEMS: HiddenGem[] = [
     id: "1",
     flag: "🇱🇧",
     gradient: "bg-linear-to-br from-emerald-900 via-green-800 to-teal-950",
+    url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091654/baakline-new_miejja.jpg",
     description: "A waterfall that drops into silence",
     country: "Lebanon"
   },
@@ -289,6 +292,7 @@ export const HIDDEN_GEMS: HiddenGem[] = [
     id: "2",
     flag: "🇲🇦",
     gradient: "bg-linear-to-br from-orange-400 via-amber-600 to-red-800",
+    url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091654/2385_qzrdep.jpg",
     description: "A village that forgot the modern world",
     country: "Morocco"
   },
@@ -296,13 +300,15 @@ export const HIDDEN_GEMS: HiddenGem[] = [
     id: "3",
     flag: "🇯🇵",
     gradient: "bg-linear-to-br from-blue-100 via-slate-300 to-indigo-400",
-    description: "A forest that holds the Milky Way",
+    url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091653/shirakawa-go-15_astkiy.jpg",
+    description: "The last thatched roof in a valley of ghosts",
     country: "Japan"
   },
   {
     id: "4",
     flag: "🇬🇪",
     gradient: "bg-linear-to-br from-purple-900 via-slate-800 to-indigo-950",
+    url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/936565aebe25858d7b_1273975_10151856021223904_1884326485_o_pbyc6l.jpg",
     description: "The shadow of a tower built for a forgotten king",
     country: "Georgia"
   },
@@ -310,6 +316,7 @@ export const HIDDEN_GEMS: HiddenGem[] = [
     id: "5",
     flag: "🇵🇪",
     gradient: "bg-linear-to-br from-red-800 via-orange-900 to-stone-900",
+    url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/qenqo-temple_tm6wly.jpg",
     description: "An altar where the sun is tied to the earth",
     country: "Peru"
   },
@@ -317,6 +324,7 @@ export const HIDDEN_GEMS: HiddenGem[] = [
     id: "6",
     flag: "🇪🇹",
     gradient: "bg-linear-to-br from-yellow-600 via-green-800 to-emerald-950",
+    url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/Maryam-Shewito-exterior-architectural-review-ethiopia-stone_psg5oy.jpg",
     description: "A church carved from a single breath of stone",
     country: "Ethiopia"
   },
@@ -324,6 +332,7 @@ export const HIDDEN_GEMS: HiddenGem[] = [
     id: "7",
     flag: "🇱🇧",
     gradient: "bg-linear-to-br from-blue-900 via-indigo-950 to-black",
+    url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091654/b2_tpupga.jpg",
     description: "A cave where the sea speaks in whispers",
     country: "Lebanon"
   },
@@ -331,6 +340,7 @@ export const HIDDEN_GEMS: HiddenGem[] = [
     id: "8",
     flag: "🇲🇦",
     gradient: "bg-linear-to-br from-rose-400 via-pink-600 to-purple-900",
+    url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091653/68ce995abf72d4300ed5846f_Draa_Valley_Morocco_zfztxm.jpg",
     description: "The last oasis before the sand becomes the sky",
     country: "Morocco"
   },
@@ -338,6 +348,7 @@ export const HIDDEN_GEMS: HiddenGem[] = [
     id: "9",
     flag: "🇯🇵",
     gradient: "bg-linear-to-br from-cyan-900 via-teal-950 to-black",
+    url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091653/e1629b9017c5290edd_hellsteaming_alamy_dwii69.jpg",
     description: "Steam rising from a nameless mountain spring",
     country: "Japan"
   }

@@ -40,7 +40,16 @@ export default function HiddenGems() {
               className="relative break-inside-avoid rounded-[32px] overflow-hidden group cursor-default"
             >
               {/* The Card */}
-              <div className={`w-full ${i % 3 === 0 ? 'aspect-3/4' : i % 3 === 1 ? 'aspect-square' : 'aspect-4/5'} ${gem.gradient} transition-transform duration-1000 group-hover:scale-110`} />
+              {gem.url ? (
+                <img 
+                  src={gem.url} 
+                  alt={gem.description}
+                  className={`w-full ${i % 3 === 0 ? 'aspect-3/4' : i % 3 === 1 ? 'aspect-square' : 'aspect-4/5'} object-cover transition-transform duration-1000 group-hover:scale-110`}
+                  referrerPolicy="no-referrer"
+                />
+              ) : (
+                <div className={`w-full ${i % 3 === 0 ? 'aspect-3/4' : i % 3 === 1 ? 'aspect-square' : 'aspect-4/5'} ${gem.gradient} transition-transform duration-1000 group-hover:scale-110`} />
+              )}
               
               {/* Overlay */}
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
