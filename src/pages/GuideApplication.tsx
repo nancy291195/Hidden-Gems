@@ -1,11 +1,19 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { Compass, ShieldCheck, Star, Users, ArrowRight } from "lucide-react";
+import { Compass, ShieldCheck, Star, Users, ArrowRight, ArrowLeft } from "lucide-react";
+import { useSettings } from "../contexts/SettingsContext";
 
 export default function GuideApplication() {
+  const { t } = useSettings();
   return (
     <div className="min-h-screen bg-brand-cream pt-32 pb-24 px-6">
       <div className="max-w-4xl mx-auto">
+        <Link 
+          to="/"
+          className="inline-flex items-center gap-2 text-brand-gold font-bold uppercase tracking-widest text-xs hover:text-brand-olive transition-colors mb-12"
+        >
+          <ArrowLeft className="w-4 h-4" /> {t("common.back_home")}
+        </Link>
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

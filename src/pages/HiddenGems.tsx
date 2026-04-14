@@ -1,12 +1,20 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 import { HIDDEN_GEMS } from "../constants";
+import { useSettings } from "../contexts/SettingsContext";
 
 export default function HiddenGems() {
+  const { t } = useSettings();
   return (
     <div className="min-h-screen bg-brand-cream pt-32 pb-24 px-6">
       <div className="max-w-7xl mx-auto">
+        <Link 
+          to="/"
+          className="inline-flex items-center gap-2 text-brand-gold font-bold uppercase tracking-widest text-xs hover:text-brand-olive transition-colors mb-12"
+        >
+          <ArrowLeft className="w-4 h-4" /> {t("common.back_home")}
+        </Link>
         {/* Header */}
         <div className="text-center mb-20">
           <motion.div
@@ -16,14 +24,14 @@ export default function HiddenGems() {
           >
             <div className="flex items-center justify-center gap-2 mb-6">
               <span className="w-12 h-[1px] bg-brand-gold" />
-              <span className="micro-label text-brand-gold uppercase tracking-widest">Undocumented</span>
+              <span className="micro-label text-brand-gold uppercase tracking-widest">{t("gems.badge")}</span>
               <span className="w-12 h-[1px] bg-brand-gold" />
             </div>
             <h1 className="text-5xl md:text-7xl font-serif mb-8 max-w-4xl mx-auto leading-tight">
-              Places you won't find <span className="serif-italic text-brand-gold">anywhere</span> else
+              {t("gems.title.1")}<span className="serif-italic text-brand-gold">{t("gems.title.highlight")}</span>{t("gems.title.2")}
             </h1>
             <p className="text-lg text-brand-ink/60 max-w-2xl mx-auto leading-relaxed">
-              These are real places. They have no Instagram hashtag. They don't appear in Google's top results. The only way to reach them is through someone who lives there.
+              {t("gems.subtitle")}
             </p>
           </motion.div>
         </div>
@@ -77,15 +85,15 @@ export default function HiddenGems() {
           className="text-center"
         >
           <div className="glass-panel p-12 rounded-[48px] max-w-3xl mx-auto border-brand-gold/20">
-            <h3 className="text-2xl font-serif mb-8">The mystery is the point.</h3>
+            <h3 className="text-2xl font-serif mb-8">{t("gems.mystery_title")}</h3>
             <p className="text-brand-ink/60 mb-10">
-              We don't provide coordinates. We don't provide names. We provide the connection to the people who hold the keys to these places.
+              {t("gems.mystery_desc")}
             </p>
             <Link 
               to="/find-a-guide" 
               className="inline-flex items-center gap-3 bg-brand-olive text-brand-cream px-10 py-5 rounded-full text-lg font-bold hover:bg-brand-olive/90 transition-all shadow-xl group"
             >
-              Find a local guide who knows the way
+              {t("gems.cta")}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>

@@ -7,10 +7,12 @@ import {
   Users, Mail, User, CreditCard 
 } from "lucide-react";
 import { GUIDES } from "../constants";
+import { useSettings } from "../contexts/SettingsContext";
 
 export default function GuideProfile() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { formatPrice, t } = useSettings();
   const bookingRef = useRef<HTMLDivElement>(null);
   const guide = GUIDES.find((g) => g.id === id);
 
@@ -49,12 +51,20 @@ export default function GuideProfile() {
       <section className="relative pt-32 pb-20 px-6 overflow-hidden">
         <div className={`absolute inset-0 bg-linear-to-br ${guide.themeColor} opacity-10`} />
         <div className="max-w-7xl mx-auto relative z-10">
-          <Link 
-            to="/find-a-guide"
-            className="flex items-center gap-2 text-brand-gold hover:text-brand-olive transition-colors mb-12 font-bold uppercase tracking-widest text-xs"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back to guides
-          </Link>
+          <div className="flex gap-6 mb-12">
+            <Link 
+              to="/"
+              className="flex items-center gap-2 text-brand-gold hover:text-brand-olive transition-colors font-bold uppercase tracking-widest text-xs"
+            >
+              <ArrowLeft className="w-4 h-4" /> {t("common.back_home")}
+            </Link>
+            <Link 
+              to="/find-a-guide"
+              className="flex items-center gap-2 text-brand-gold hover:text-brand-olive transition-colors font-bold uppercase tracking-widest text-xs"
+            >
+              <ArrowLeft className="w-4 h-4" /> Back to guides
+            </Link>
+          </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -66,7 +76,7 @@ export default function GuideProfile() {
                 <div>
                   <div className="flex items-center gap-2 mb-1">
                     <ShieldCheck className="w-4 h-4 text-brand-olive" />
-                    <span className="micro-label text-brand-olive">Verified Local Expert</span>
+                    <span className="micro-label text-brand-olive">{t("profile.verified")}</span>
                   </div>
                   <p className="text-sm font-medium text-brand-ink/60">{guide.region}, {guide.country}</p>
                 </div>
@@ -80,11 +90,11 @@ export default function GuideProfile() {
                 <div className="flex items-center gap-1">
                   <Star className="w-5 h-5 fill-brand-gold text-brand-gold" />
                   <span className="text-xl font-bold">{guide.rating}</span>
-                  <span className="text-brand-ink/40 ml-1">({guide.reviewsCount} reviews)</span>
+                  <span className="text-brand-ink/40 ml-1">{t("profile.reviews", { count: guide.reviewsCount })}</span>
                 </div>
                 <div className="w-[1px] h-6 bg-brand-olive/20" />
                 <div className="text-brand-ink/60">
-                  <span className="font-bold text-brand-ink">${guide.toursFrom}</span> / person
+                  <span className="font-bold text-brand-ink">{t("profile.from_person", { price: formatPrice(guide.toursFrom) })}</span>
                 </div>
               </div>
 
@@ -92,7 +102,7 @@ export default function GuideProfile() {
                 onClick={scrollToBooking}
                 className="bg-brand-olive text-brand-cream px-10 py-5 rounded-full text-lg font-bold hover:bg-brand-olive/90 transition-all shadow-xl"
               >
-                Book this guide
+                {t("profile.book")}
               </button>
             </motion.div>
 
@@ -159,22 +169,22 @@ export default function GuideProfile() {
           <div className="lg:col-span-2 space-y-20">
             {/* Biography */}
             <section>
-              <h2 className="text-3xl font-serif mb-8">About your guide</h2>
+              <h2 className="text-3xl font-serif mb-8">{t("profile.about")}</h2>
               <div className="prose prose-lg text-brand-ink/70 max-w-none mb-10">
-                <p className="leading-relaxed">{guide.bio}</p>
+                <p className="leading-relaxed">{t(`${guide.id}.bio`) !== `${guide.id}.bio` ? t(`${guide.id}.bio`) : guide.bio}</p>
               </div>
               
               <div className="grid sm:grid-cols-3 gap-8 pt-8 border-t border-brand-olive/10">
                 <div>
-                  <p className="micro-label mb-2">Languages</p>
+                  <p className="micro-label mb-2">{t("profile.languages")}</p>
                   <p className="font-bold">{guide.languages.join(", ")}</p>
                 </div>
                 <div>
-                  <p className="micro-label mb-2">Experience</p>
-                  <p className="font-bold">{guide.experienceYears} Years</p>
+                  <p className="micro-label mb-2">{t("profile.experience")}</p>
+                  <p className="font-bold">{t("profile.experience_years", { years: guide.experienceYears })}</p>
                 </div>
                 <div>
-                  <p className="micro-label mb-2">Expertise</p>
+                  <p className="micro-label mb-2">{t("profile.expertise")}</p>
                   <div className="flex flex-wrap gap-2 mt-2">
                     {guide.certifications.map((cert, i) => (
                       <span key={i} className="text-[10px] font-bold uppercase tracking-widest px-2 py-1 bg-brand-olive/5 rounded-md border border-brand-olive/10">
@@ -192,11 +202,11 @@ export default function GuideProfile() {
                 <Quote className="absolute -top-4 -left-4 w-24 h-24 opacity-10 rotate-12" />
                 <div className="relative z-10 text-center">
                   <p className="text-3xl font-serif italic mb-6 leading-relaxed">
-                    "{guide.promise}"
+                    "{t(`${guide.id}.promise`) !== `${guide.id}.promise` ? t(`${guide.id}.promise`) : guide.promise}"
                   </p>
                   <div className="flex items-center justify-center gap-2">
                     <span className="w-8 h-[1px] bg-brand-gold" />
-                    <span className="micro-label text-brand-gold">{guide.name.split(' ')[0]}'s Personal Guarantee</span>
+                    <span className="micro-label text-brand-gold">{t("profile.promise_badge", { name: guide.name.split(' ')[0] })}</span>
                     <span className="w-8 h-[1px] bg-brand-gold" />
                   </div>
                 </div>
@@ -205,16 +215,18 @@ export default function GuideProfile() {
 
             {/* Tour Packages */}
             <section>
-              <h2 className="text-3xl font-serif mb-10">Curated Experiences</h2>
+              <h2 className="text-3xl font-serif mb-10">{t("profile.packages")}</h2>
               <div className="space-y-6">
                 {guide.tours.map((tour, i) => (
                   <div key={i} className="glass-panel p-8 rounded-[32px] hover:border-brand-gold transition-all group">
                     <div className="flex flex-col md:flex-row justify-between gap-6">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-2xl font-serif font-bold">{tour.name}</h3>
+                          <h3 className="text-2xl font-serif font-bold">
+                            {t(`${guide.id}.tour.${i+1}.name`) !== `${guide.id}.tour.${i+1}.name` ? t(`${guide.id}.tour.${i+1}.name`) : tour.name}
+                          </h3>
                           <span className="px-3 py-1 bg-brand-gold/10 text-brand-gold rounded-full text-[10px] font-bold uppercase tracking-widest">
-                            Most Popular
+                            {t("profile.most_popular")}
                           </span>
                         </div>
                         <div className="flex items-center gap-4 text-sm text-brand-ink/50 mb-6">
@@ -222,12 +234,13 @@ export default function GuideProfile() {
                             <Clock className="w-4 h-4" /> {tour.duration}
                           </div>
                           <div className="w-1 h-1 bg-brand-ink/20 rounded-full" />
-                          <div>From ${tour.price} per person</div>
+                          <div>{t("common.from")} {formatPrice(tour.price)}</div>
                         </div>
                         <div className="grid sm:grid-cols-2 gap-3">
                           {tour.included.map((item, j) => (
                             <div key={j} className="flex items-center gap-2 text-sm text-brand-ink/70">
-                              <Check className="w-4 h-4 text-brand-olive" /> {item}
+                              <Check className="w-4 h-4 text-brand-olive" /> 
+                              {t(`${guide.id}.tour.${i+1}.included.${j+1}`) !== `${guide.id}.tour.${i+1}.included.${j+1}` ? t(`${guide.id}.tour.${i+1}.included.${j+1}`) : item}
                             </div>
                           ))}
                         </div>
@@ -240,7 +253,7 @@ export default function GuideProfile() {
                           }}
                           className="px-8 py-4 bg-brand-olive text-brand-cream rounded-full font-bold hover:bg-brand-olive/90 transition-all group-hover:scale-105"
                         >
-                          Select this tour
+                          {t("profile.select_tour")}
                         </button>
                       </div>
                     </div>
@@ -252,11 +265,11 @@ export default function GuideProfile() {
             {/* Reviews Section */}
             <section>
               <div className="flex items-center justify-between mb-12">
-                <h2 className="text-3xl font-serif">Traveller Stories</h2>
+                <h2 className="text-3xl font-serif">{t("profile.stories")}</h2>
                 <div className="flex items-center gap-2">
                   <Star className="w-5 h-5 fill-brand-gold text-brand-gold" />
                   <span className="font-bold">{guide.rating}</span>
-                  <span className="text-brand-ink/40">({guide.reviewsCount} reviews)</span>
+                  <span className="text-brand-ink/40">{t("profile.reviews", { count: guide.reviewsCount })}</span>
                 </div>
               </div>
               
@@ -295,26 +308,26 @@ export default function GuideProfile() {
                 viewport={{ once: true }}
                 className="glass-panel p-8 rounded-[40px] border-brand-gold/30 shadow-2xl"
               >
-                <h3 className="text-2xl font-serif mb-8">Secure Your Experience</h3>
+                <h3 className="text-2xl font-serif mb-8">{t("profile.secure_booking")}</h3>
                 
                 <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                   <div className="space-y-2">
-                    <label className="micro-label">Select Tour</label>
-                    <select 
-                      value={bookingData.tour}
-                      onChange={(e) => setBookingData({...bookingData, tour: e.target.value})}
-                      className="w-full p-4 bg-brand-cream rounded-2xl border border-brand-olive/10 focus:border-brand-gold outline-hidden transition-all text-sm"
-                    >
-                      <option value="">Choose a package</option>
-                      {guide.tours.map((t, i) => (
-                        <option key={i} value={t.name}>{t.name} — ${t.price}</option>
-                      ))}
-                    </select>
+                    <label className="micro-label">{t("profile.select_package")}</label>
+                      <select 
+                        value={bookingData.tour}
+                        onChange={(e) => setBookingData({...bookingData, tour: e.target.value})}
+                        className="w-full p-4 bg-brand-cream rounded-2xl border border-brand-olive/10 focus:border-brand-gold outline-hidden transition-all text-sm"
+                      >
+                        <option value="">{t("profile.select_package")}</option>
+                        {guide.tours.map((t, i) => (
+                          <option key={i} value={t.name}>{t.name} — {formatPrice(t.price)}</option>
+                        ))}
+                      </select>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label className="micro-label">Date</label>
+                      <label className="micro-label">{t("profile.date")}</label>
                       <div className="relative">
                         <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-ink/30" />
                         <input 
@@ -324,7 +337,7 @@ export default function GuideProfile() {
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <label className="micro-label">Travellers</label>
+                      <label className="micro-label">{t("profile.travellers")}</label>
                       <div className="relative">
                         <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-ink/30" />
                         <select 
@@ -333,7 +346,7 @@ export default function GuideProfile() {
                           className="w-full p-4 pl-12 bg-brand-cream rounded-2xl border border-brand-olive/10 focus:border-brand-gold outline-hidden transition-all text-sm"
                         >
                           {[1,2,3,4,5,6,7,8].map(n => (
-                            <option key={n} value={n}>{n} {n === 1 ? 'Person' : 'People'}</option>
+                            <option key={n} value={n}>{n} {n === 1 ? t("profile.person") : t("profile.people")}</option>
                           ))}
                         </select>
                       </div>
@@ -345,7 +358,7 @@ export default function GuideProfile() {
                       <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-ink/30" />
                       <input 
                         type="text" 
-                        placeholder="Full Name"
+                        placeholder={t("profile.full_name")}
                         className="w-full p-4 pl-12 bg-brand-cream rounded-2xl border border-brand-olive/10 focus:border-brand-gold outline-hidden transition-all text-sm"
                       />
                     </div>
@@ -353,12 +366,12 @@ export default function GuideProfile() {
                       <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-ink/30" />
                       <input 
                         type="email" 
-                        placeholder="Email Address"
+                        placeholder={t("profile.email")}
                         className="w-full p-4 pl-12 bg-brand-cream rounded-2xl border border-brand-olive/10 focus:border-brand-gold outline-hidden transition-all text-sm"
                       />
                     </div>
                     <textarea 
-                      placeholder="Message to guide (optional)..."
+                      placeholder={t("profile.message")}
                       className="w-full p-4 bg-brand-cream rounded-2xl border border-brand-olive/10 focus:border-brand-gold outline-hidden transition-all text-sm h-24 resize-none"
                     />
                   </div>
@@ -366,20 +379,20 @@ export default function GuideProfile() {
                   <div className="pt-6">
                     <button className="w-full py-5 bg-brand-gold text-brand-ink rounded-full font-bold hover:bg-brand-gold/90 transition-all shadow-lg flex items-center justify-center gap-3">
                       <CreditCard className="w-5 h-5" />
-                      Confirm & Pay Securely
+                      {t("profile.confirm_pay")}
                     </button>
                     <div className="mt-6 space-y-3">
                       <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-brand-ink/40">
                         <Check className="w-3 h-3 text-brand-olive" />
-                        Free cancellation up to 48h
+                        {t("profile.free_cancel")}
                       </div>
                       <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-brand-ink/40">
                         <Check className="w-3 h-3 text-brand-olive" />
-                        Confirmed within 24h
+                        {t("profile.confirmed_within")}
                       </div>
                       <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-brand-ink/40">
                         <ShieldCheck className="w-3 h-3 text-brand-olive" />
-                        Powered by Stripe
+                        {t("profile.powered_by")}
                       </div>
                     </div>
                   </div>

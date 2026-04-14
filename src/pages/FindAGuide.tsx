@@ -1,12 +1,21 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowLeft, ChevronRight, MapPin } from "lucide-react";
 import { GUIDES, Guide } from "../constants";
 import GuideCard from "../components/GuideCard";
+import { useSettings } from "../contexts/SettingsContext";
 
 export default function FindAGuide() {
+  const { t } = useSettings();
+  const location = useLocation();
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (location.state?.country) {
+      setSelectedCountry(location.state.country);
+    }
+  }, [location.state]);
 
   const countries = Array.from(new Set(GUIDES.map((g) => g.country))).map(
     (country) => ({
@@ -20,6 +29,12 @@ export default function FindAGuide() {
   return (
     <div className="min-h-screen bg-brand-cream pt-24 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
+        <Link 
+          to="/"
+          className="inline-flex items-center gap-2 text-brand-gold font-bold uppercase tracking-widest text-xs hover:text-brand-olive transition-colors mb-12"
+        >
+          <ArrowLeft className="w-4 h-4" /> {t("common.back_home")}
+        </Link>
         <AnimatePresence mode="wait">
           {!selectedCountry ? (
             <motion.div
@@ -30,14 +45,9 @@ export default function FindAGuide() {
               className="max-w-4xl mx-auto"
             >
               <div className="text-center mb-16">
-                <div className="flex items-center justify-center gap-2 mb-4">
-                  <span className="w-12 h-[1px] bg-brand-gold" />
-                  <span className="micro-label text-brand-gold">Step 1</span>
-                  <span className="w-12 h-[1px] bg-brand-gold" />
-                </div>
-                <h1 className="text-5xl font-serif mb-6">Where are you headed?</h1>
+                <h1 className="text-5xl font-serif mb-6">{t("find.title")}</h1>
                 <p className="text-brand-ink/60 max-w-lg mx-auto">
-                  Select a country to discover local experts who know the hidden trails and secret stories of their homeland.
+                  {t("find.subtitle")}
                 </p>
               </div>
 
@@ -53,7 +63,7 @@ export default function FindAGuide() {
                       <div>
                         <h3 className="text-xl font-serif font-bold">{country.name}</h3>
                         <p className="text-xs opacity-60 uppercase tracking-widest font-medium">
-                          {GUIDES.filter(g => g.country === country.name).length} Guides
+                          {t("find.guides_count", { count: GUIDES.filter(g => g.country === country.name).length })}
                         </p>
                       </div>
                     </div>
@@ -75,19 +85,19 @@ export default function FindAGuide() {
                     onClick={() => setSelectedCountry(null)}
                     className="flex items-center gap-2 text-brand-gold hover:text-brand-olive transition-colors mb-6 font-bold uppercase tracking-widest text-xs"
                   >
-                    <ArrowLeft className="w-4 h-4" /> Choose another country
+                    <ArrowLeft className="w-4 h-4" /> {t("find.another_country")}
                   </button>
                   <div className="flex items-center gap-4">
                     <span className="text-5xl">
                       {countries.find((c) => c.name === selectedCountry)?.flag}
                     </span>
                     <h1 className="text-6xl font-serif">
-                      Guides in <span className="serif-italic text-brand-gold">{selectedCountry}</span>
+                      {t("featured.title.1")}<span className="serif-italic text-brand-gold">{selectedCountry}</span>
                     </h1>
                   </div>
                 </div>
                 <p className="text-brand-ink/50 text-sm max-w-xs">
-                  Showing {filteredGuides.length} verified local experts in {selectedCountry}.
+                  {t("find.showing", { count: filteredGuides.length, country: selectedCountry })}
                 </p>
               </div>
 

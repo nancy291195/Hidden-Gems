@@ -40,6 +40,8 @@ export interface Guide {
   themeColor: string;
   mapX: number; // 0-100 percentage
   mapY: number; // 0-100 percentage
+  lat: number;
+  lng: number;
   photos: PhotoPlaceholder[];
   tours: TourPackage[];
   reviews: Review[];
@@ -67,6 +69,8 @@ export const GUIDES: Guide[] = [
     themeColor: "from-red-600 to-green-700",
     mapX: 58,
     mapY: 34,
+    lat: 33.8547,
+    lng: 35.8623,
     photos: [
       { caption: "Dawn light on a waterfall no map has named", gradient: "bg-linear-to-br from-blue-400 to-green-500", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091654/baakline-new_miejja.jpg" },
       { caption: "The Milky Way over the Iron Oak forest", gradient: "bg-linear-to-br from-indigo-900 to-purple-800", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091654/12239979_10206399522081764_4501778728570353190_n_dfru6j.jpg" },
@@ -104,6 +108,8 @@ export const GUIDES: Guide[] = [
     themeColor: "from-orange-600 to-red-800",
     mapX: 46,
     mapY: 38,
+    lat: 34.0331,
+    lng: -5.0003,
     photos: [
       { caption: "The hidden copper foundries of the deep Medina", gradient: "bg-linear-to-br from-orange-500 to-amber-800", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091654/ac8842fd-496a-440b-acfb-66a10fbcab55_explore-the-hidden-gems-and-main-sites-of-the-fes-medina_grp8ec.png" },
       { caption: "A tea ceremony in a village with no roads", gradient: "bg-linear-to-br from-emerald-500 to-yellow-600", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091654/2385_qzrdep.jpg" },
@@ -141,6 +147,8 @@ export const GUIDES: Guide[] = [
     themeColor: "from-slate-800 to-red-900",
     mapX: 88,
     mapY: 35,
+    lat: 38.2682,
+    lng: 140.8694,
     photos: [
       { caption: "Steam rising from a nameless mountain spring", gradient: "bg-linear-to-br from-slate-200 to-blue-400", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091653/e1629b9017c5290edd_hellsteaming_alamy_dwii69.jpg" },
       { caption: "The last thatched roof in a valley of ghosts", gradient: "bg-linear-to-br from-stone-500 to-emerald-900", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091653/shirakawa-go-15_astkiy.jpg" },
@@ -178,6 +186,8 @@ export const GUIDES: Guide[] = [
     themeColor: "from-red-700 to-amber-900",
     mapX: 61,
     mapY: 31,
+    lat: 42.3154,
+    lng: 43.3569,
     photos: [
       { caption: "Shadows of Svaneti towers at twilight", gradient: "bg-linear-to-br from-slate-700 to-indigo-950", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/936565aebe25858d7b_1273975_10151856021223904_1884326485_o_pbyc6l.jpg" },
       { caption: "The wild horses of the Tusheti plains", gradient: "bg-linear-to-br from-yellow-600 to-emerald-800", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/Lead-pic-750x430-1_xkd5uv.jpg" },
@@ -215,6 +225,8 @@ export const GUIDES: Guide[] = [
     themeColor: "from-red-600 to-amber-600",
     mapX: 28,
     mapY: 68,
+    lat: -13.5319,
+    lng: -71.9675,
     photos: [
       { caption: "An Incan altar hidden by centuries of vines", gradient: "bg-linear-to-br from-emerald-800 to-stone-600", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/qenqo-temple_tm6wly.jpg" },
       { caption: "The first light hitting an undocumented peak", gradient: "bg-linear-to-br from-orange-400 to-rose-700", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/hq720_peqj8z.jpg" },
@@ -252,6 +264,8 @@ export const GUIDES: Guide[] = [
     themeColor: "from-yellow-500 via-red-600 to-green-700",
     mapX: 59,
     mapY: 52,
+    lat: 14.1275,
+    lng: 38.7210,
     photos: [
       { caption: "The sheer climb to a 6th-century rock church", gradient: "bg-linear-to-br from-orange-700 to-stone-800", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/Maryam-Shewito-exterior-architectural-review-ethiopia-stone_psg5oy.jpg" },
       { caption: "A hidden ceremony in the Omo Valley", gradient: "bg-linear-to-br from-amber-500 to-red-800", url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091652/Omo-Valley_Gilad-Fiskus_Hidden-Compass-5-scaled-1-2488x1660_rtqu17.jpg" },
@@ -267,6 +281,754 @@ export const GUIDES: Guide[] = [
       { userName: "Rachel", userFlag: "🇺🇸", rating: 5, date: "December 2025", comment: "The community access Tigist provides is respectful and genuine. We felt like welcome guests." },
       { userName: "Luca", userFlag: "🇮🇹", rating: 5, date: "October 2025", comment: "Ethiopia is beautiful and Tigist is the best person to show it to you. Her knowledge is vast." }
     ]
+  },
+  {
+    id: "nidal",
+    name: "Nidal Majdalani",
+    country: "Lebanon",
+    region: "Hermel, Bekaa Valley & Akkar",
+    flag: "🇱🇧",
+    speciality: "Wilderness explorer & heritage researcher",
+    promise: "I will take you somewhere in Lebanon where the night sky makes you forget the modern world exists. And during the day, I'll show you a pyramid that archaeologists haven't finished explaining.",
+    bio: "Born in the Bekaa Valley, Nidal has spent over a decade documenting Lebanon's most overlooked northern territories — Hermel, Akkar, and the upper Bekaa. A heritage researcher by training, he has located and mapped prehistoric megalithic tomb sites in Menjez that appear in no tourist guide. He runs the only dark-sky camping experience in Lebanon, in a remote juniper forest above Hermel where the Milky Way is visible to the naked eye. He also organises Assi River rafting expeditions and visits to the mysterious Hermel pyramid.",
+    languages: ["Arabic", "French", "English"],
+    experienceYears: 12,
+    certifications: ["Heritage Researcher", "Wilderness First Aid", "Dark Sky Advocate"],
+    topHiddenGems: ["Menjez Megalithic Tombs", "Hermel Pyramid", "Upper Bekaa Wilderness"],
+    bestFor: ["Stargazers", "History buffs", "Adventure seekers"],
+    toursFrom: 65,
+    rating: 4.94,
+    reviewsCount: 89,
+    image: "https://picsum.photos/seed/nidal-guide/800/1000",
+    themeColor: "from-emerald-800 to-slate-900",
+    mapX: 59,
+    mapY: 33,
+    lat: 34.3933,
+    lng: 36.3833,
+    photos: [
+      { caption: "The Milky Way over Hermel's juniper forests", gradient: "bg-linear-to-br from-indigo-950 to-black", url: "https://picsum.photos/seed/hermel-stars/1200/800" },
+      { caption: "The mysterious Hermel pyramid at sunset", gradient: "bg-linear-to-br from-orange-800 to-stone-900", url: "https://picsum.photos/seed/hermel-pyramid/1200/800" }
+    ],
+    tours: [
+      { name: "Hermel Dark Sky Camp & Pyramid", duration: "Overnight", price: 90, included: ["Camping Gear", "Dinner & Breakfast", "Guided Stargazing"] },
+      { name: "Assi River Rafting & Heritage Day", duration: "Full Day", price: 75, included: ["Rafting Gear", "Lunch", "Heritage Tour"] },
+      { name: "Menjez Megalithic Tombs & Akkar Forests", duration: "Full Day", price: 65, included: ["Transport", "Picnic", "Expert Talk"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "rania",
+    name: "Rania Khoury",
+    country: "Lebanon",
+    region: "South Lebanon, Chouf & Coastal hidden spots",
+    flag: "🇱🇧",
+    speciality: "Coastal & village culture guide",
+    promise: "You will eat in someone's home, swim in a pool fed by a spring, and sit under an olive tree that was alive when Rome was an empire.",
+    bio: "Rania grew up between Beirut and the Chouf mountains and has been guiding small groups since 2018, specialising in Lebanon's southern coast and the Koura district. She is one of the few guides who takes visitors to Anfeh's Phoenician salt pans at dawn, the ancient olive groves of Amioun, and the hidden waterfalls of the Chouf hills. She combines her tours with deep dives into Lebanese village food culture.",
+    languages: ["Arabic", "French", "English"],
+    experienceYears: 8,
+    certifications: ["Cultural Heritage Guide", "Food Safety Certified"],
+    topHiddenGems: ["Anfeh salt pans", "Amioun olive groves", "Chouf hidden springs"],
+    bestFor: ["Foodies", "Culture lovers", "Slow travellers"],
+    toursFrom: 55,
+    rating: 4.91,
+    reviewsCount: 67,
+    image: "https://picsum.photos/seed/rania-guide/800/1000",
+    themeColor: "from-blue-600 to-emerald-700",
+    mapX: 57,
+    mapY: 35,
+    lat: 33.5611,
+    lng: 35.3889,
+    photos: [
+      { caption: "Dawn at the Phoenician salt pans of Anfeh", gradient: "bg-linear-to-br from-cyan-400 to-blue-600", url: "https://picsum.photos/seed/anfeh-salt/1200/800" },
+      { caption: "Ancient olive groves in the heart of Koura", gradient: "bg-linear-to-br from-emerald-600 to-yellow-700", url: "https://picsum.photos/seed/olive-groves/1200/800" }
+    ],
+    tours: [
+      { name: "Anfeh Coast & Salt Pans Dawn Tour", duration: "Half Day", price: 55, included: ["Breakfast", "Local Guide"] },
+      { name: "Chouf Waterfalls & Village Food", duration: "Full Day", price: 65, included: ["Home-cooked Lunch", "Transport"] },
+      { name: "Koura Ancient Olive Groves & Byzantine Churches", duration: "Full Day", price: 60, included: ["Olive Oil Tasting", "Entry Fees"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "hamza",
+    name: "Hamza Benali",
+    country: "Morocco",
+    region: "Marrakech hinterland & High Atlas villages",
+    flag: "🇲🇦",
+    speciality: "Mountain village & artisan guide",
+    promise: "I will show you the Marrakech that exists behind the souvenir stalls, and the Atlas that exists above the cloud line. Neither one appears on the first page of Google.",
+    bio: "Hamza was born in a small Berber village in the High Atlas and moved to Marrakech as a teenager. He bridges both worlds — knowing the city's hidden medina quarters that tourists walk past, and the mountain villages above the snowline that no tour bus reaches. He specialises in taking small groups to working artisan workshops.",
+    languages: ["Tamazight", "Arabic", "French", "English"],
+    experienceYears: 14,
+    certifications: ["Licensed Mountain Guide", "Artisan Heritage Specialist"],
+    topHiddenGems: ["High Atlas mule trails", "Hidden Medina workshops"],
+    bestFor: ["Adventure seekers", "Art lovers", "Culture seekers"],
+    toursFrom: 70,
+    rating: 4.93,
+    reviewsCount: 112,
+    image: "https://picsum.photos/seed/hamza-guide/800/1000",
+    themeColor: "from-orange-700 to-stone-800",
+    mapX: 45,
+    mapY: 39,
+    lat: 31.6295,
+    lng: -7.9811,
+    photos: [
+      { caption: "A village perched high in the Atlas mountains", gradient: "bg-linear-to-br from-slate-400 to-orange-900", url: "https://picsum.photos/seed/atlas-village/1200/800" },
+      { caption: "Working with master weavers in the Medina", gradient: "bg-linear-to-br from-red-800 to-amber-900", url: "https://picsum.photos/seed/artisan-workshop/1200/800" }
+    ],
+    tours: [
+      { name: "Hidden Marrakech Artisan Day", duration: "Full Day", price: 70, included: ["Lunch", "Workshop Access"] },
+      { name: "High Atlas Village Trek", duration: "2 Days", price: 180, included: ["Mule Support", "Camping Gear", "All Meals"] },
+      { name: "Berber Family Stay & Cooking", duration: "Overnight", price: 130, included: ["Cooking Class", "Accommodation", "All Meals"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "fatima",
+    name: "Fatima Ouzine",
+    country: "Morocco",
+    region: "Northern Morocco — Chefchaouen hinterland & Rif Mountains",
+    flag: "🇲🇦",
+    speciality: "Rif Mountain & coastal heritage guide",
+    promise: "The blue city is beautiful. But the mountains above it are another world. I will show you both — and I'll show you the parts that the photographers haven't found yet.",
+    bio: "Fatima grew up in the hills above Chefchaouen and knows the Rif Mountains the way most people know their own neighbourhood. She leads travellers beyond the famous blue streets into the farming villages above, where the landscape is wild, the people are warm, and no tour group has ever arrived.",
+    languages: ["Tarifit", "Arabic", "Spanish", "English"],
+    experienceYears: 10,
+    certifications: ["Regional Heritage Guide", "Wilderness First Aid"],
+    topHiddenGems: ["Rif Mountain off-grid villages", "Coastal Phoenician sites"],
+    bestFor: ["Hikers", "History buffs", "Nature lovers"],
+    toursFrom: 60,
+    rating: 4.90,
+    reviewsCount: 78,
+    image: "https://picsum.photos/seed/fatima-guide/800/1000",
+    themeColor: "from-blue-500 to-emerald-800",
+    mapX: 47,
+    mapY: 37,
+    lat: 35.1714,
+    lng: -5.2697,
+    photos: [
+      { caption: "Wild peaks of the Rif Mountains", gradient: "bg-linear-to-br from-emerald-700 to-blue-900", url: "https://picsum.photos/seed/rif-mountains/1200/800" },
+      { caption: "Forgotten Phoenician ruins on the coast", gradient: "bg-linear-to-br from-cyan-600 to-stone-700", url: "https://picsum.photos/seed/phoenician-ruins/1200/800" }
+    ],
+    tours: [
+      { name: "Rif Mountain Hidden Villages", duration: "Full Day", price: 60, included: ["Village Lunch", "Transport"] },
+      { name: "Chefchaouen Beyond the Blue", duration: "Half Day", price: 55, included: ["History Talk", "Hidden Trails"] },
+      { name: "Tangier Heritage & Coastal Ruins", duration: "Full Day", price: 70, included: ["Entry Fees", "Lunch"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "yuki",
+    name: "Yuki Tanaka",
+    country: "Japan",
+    region: "Kyoto countryside & Nara deep mountains",
+    flag: "🇯🇵",
+    speciality: "Ancient Japan forest & temple guide",
+    promise: "Japan's most sacred places are not the famous ones. I will take you to the ones that even the Japanese don't know about, at the hour of day when the forest belongs only to you.",
+    bio: "Yuki was raised in a family of Shinto priests near Nara and has an intimate understanding of Japan's sacred landscape. She leads small groups to cedar forests so ancient they predate recorded history, to mountain temples that receive fewer than 100 visitors a year, and to Shinto ceremonies that are not listed in any travel publication.",
+    languages: ["Japanese", "English"],
+    experienceYears: 16,
+    certifications: ["Shinto Heritage Specialist", "Forest Therapy Guide"],
+    topHiddenGems: ["Hidden Nara mountain temples", "Ancient cedar forests"],
+    bestFor: ["Spiritual seekers", "Nature lovers", "Early birds"],
+    toursFrom: 95,
+    rating: 4.98,
+    reviewsCount: 156,
+    image: "https://picsum.photos/seed/yuki-guide/800/1000",
+    themeColor: "from-emerald-900 to-slate-900",
+    mapX: 87,
+    mapY: 36,
+    lat: 34.6851,
+    lng: 135.8048,
+    photos: [
+      { caption: "Dawn mist in an ancient cedar forest", gradient: "bg-linear-to-br from-slate-400 to-emerald-950", url: "https://picsum.photos/seed/cedar-forest/1200/800" },
+      { caption: "A mountain temple untouched by time", gradient: "bg-linear-to-br from-stone-500 to-indigo-900", url: "https://picsum.photos/seed/mountain-temple/1200/800" }
+    ],
+    tours: [
+      { name: "Sacred Forest Dawn Walk", duration: "Half Day", price: 95, included: ["Traditional Breakfast", "Meditation Session"] },
+      { name: "Hidden Nara Mountain Temples", duration: "Full Day", price: 130, included: ["Temple Entry", "Monk-style Lunch"] },
+      { name: "Ancient Pilgrimage Trail", duration: "2 Days", price: 280, included: ["Temple Stay", "All Meals", "Guide"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "takeshi",
+    name: "Takeshi Yamamoto",
+    country: "Japan",
+    region: "Okinawa & southern island chains",
+    flag: "🇯🇵",
+    speciality: "Island & underwater heritage guide",
+    promise: "I will take you to an island where the last tourist visited six months ago, and to underwater stones that no historian has fully explained. Both will stay with you forever.",
+    bio: "Born on a small island in the Ryukyu chain, Takeshi has spent his life between the islands and the sea. He guides travellers through the lesser-known islands south of Okinawa — islands with no hotels, no tourist infrastructure, and communities that maintain Ryukyu traditions.",
+    languages: ["Japanese", "Okinawan dialect", "English"],
+    experienceYears: 12,
+    certifications: ["PADI Divemaster", "Ryukyu Heritage Specialist"],
+    topHiddenGems: ["Yonaguni underwater ruins", "Remote Ryukyu islands"],
+    bestFor: ["Divers", "Island hoppers", "History lovers"],
+    toursFrom: 120,
+    rating: 4.96,
+    reviewsCount: 63,
+    image: "https://picsum.photos/seed/takeshi-guide/800/1000",
+    themeColor: "from-cyan-600 to-blue-900",
+    mapX: 86,
+    mapY: 42,
+    lat: 26.2124,
+    lng: 127.6809,
+    photos: [
+      { caption: "The mysterious underwater ruins of Yonaguni", gradient: "bg-linear-to-br from-blue-900 to-teal-950", url: "https://picsum.photos/seed/yonaguni/1200/800" },
+      { caption: "Crystal clear waters of a remote Ryukyu beach", gradient: "bg-linear-to-br from-cyan-400 to-blue-600", url: "https://picsum.photos/seed/ryukyu-beach/1200/800" }
+    ],
+    tours: [
+      { name: "Remote Ryukyu Island Day", duration: "Full Day", price: 120, included: ["Boat Transport", "Local Lunch", "Snorkel Gear"] },
+      { name: "Yonaguni Underwater Ruins Snorkel", duration: "Full Day", price: 160, included: ["Boat Access", "Diving Gear", "Expert Briefing"] },
+      { name: "Island Community & Ryukyu Culture", duration: "2 Days", price: 200, included: ["Homestay", "All Meals", "Cultural Workshop"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "mariam",
+    name: "Mariam Beridze",
+    country: "Georgia",
+    region: "Tbilisi old city & Kartli wine region",
+    flag: "🇬🇪",
+    speciality: "Urban heritage & wine culture guide",
+    promise: "Tbilisi has layers that most visitors never see. I will take you underground, into courtyards, and back 8,000 years — all in one day.",
+    bio: "Mariam was born in the old city of Tbilisi and has watched tourists walk past some of its most extraordinary hidden spaces for years. She now dedicates her work to showing small groups the Tbilisi that exists behind the renovated facades — cave dwellings, courtyard communities, and underground natural wine bars.",
+    languages: ["Georgian", "Russian", "English"],
+    experienceYears: 11,
+    certifications: ["National Heritage Guide", "Sommelier Certified"],
+    topHiddenGems: ["Tbilisi cave dwellings", "Kartli natural vineyards"],
+    bestFor: ["Wine lovers", "Urban explorers", "History buffs"],
+    toursFrom: 75,
+    rating: 4.92,
+    reviewsCount: 108,
+    image: "https://picsum.photos/seed/mariam-guide/800/1000",
+    themeColor: "from-purple-800 to-red-900",
+    mapX: 62,
+    mapY: 32,
+    lat: 41.7151,
+    lng: 44.8271,
+    photos: [
+      { caption: "A hidden courtyard in the heart of Old Tbilisi", gradient: "bg-linear-to-br from-amber-600 to-stone-800", url: "https://picsum.photos/seed/tbilisi-courtyard/1200/800" },
+      { caption: "Ancient qvevri in a family-run Kartli vineyard", gradient: "bg-linear-to-br from-red-900 to-orange-950", url: "https://picsum.photos/seed/kartli-wine/1200/800" }
+    ],
+    tours: [
+      { name: "Hidden Tbilisi Deep Walk", duration: "Full Day", price: 75, included: ["Wine Tasting", "History Talk"] },
+      { name: "Natural Wine & Old Vine Kartli", duration: "Full Day", price: 90, included: ["Vineyard Visit", "Traditional Lunch"] },
+      { name: "Tbilisi Cave Dwellings & Silk Road", duration: "Full Day", price: 85, included: ["Entry Fees", "Transport"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "davit",
+    name: "Davit Chikvanaia",
+    country: "Georgia",
+    region: "Racha & Imereti — western Georgia highlands",
+    flag: "🇬🇪",
+    speciality: "Western Georgia wilderness & cave guide",
+    promise: "Western Georgia is a secret that even most Georgians keep to themselves. I will take you deeper into it than any guide has taken you before.",
+    bio: "Davit grew up in the Racha region of western Georgia — one of the least visited and most spectacular parts of the Caucasus. He leads travellers through highland meadows accessible only by 4WD or foot, to medieval churches hidden in forests, and beyond the tourist sections of the Prometheus Cave system.",
+    languages: ["Georgian", "Russian", "English"],
+    experienceYears: 9,
+    certifications: ["Mountain Rescue Certified", "Speleology Specialist"],
+    topHiddenGems: ["Racha highlands", "Prometheus Cave deep chambers"],
+    bestFor: ["Adventure seekers", "Campers", "Nature lovers"],
+    toursFrom: 80,
+    rating: 4.89,
+    reviewsCount: 54,
+    image: "https://picsum.photos/seed/davit-guide/800/1000",
+    themeColor: "from-emerald-800 to-blue-900",
+    mapX: 60,
+    mapY: 31,
+    lat: 42.5167,
+    lng: 43.4167,
+    photos: [
+      { caption: "Wild camping in the Racha highlands", gradient: "bg-linear-to-br from-indigo-900 to-emerald-950", url: "https://picsum.photos/seed/racha-camping/1200/800" },
+      { caption: "Deep inside the unmapped chambers of Prometheus Cave", gradient: "bg-linear-to-br from-slate-800 to-blue-950", url: "https://picsum.photos/seed/cave-exploration/1200/800" }
+    ],
+    tours: [
+      { name: "Racha Highland Wild Camp", duration: "Overnight", price: 80, included: ["Camping Gear", "All Meals", "4WD Transport"] },
+      { name: "Prometheus Cave Deep Exploration", duration: "Full Day", price: 90, included: ["Safety Gear", "Expert Guide"] },
+      { name: "Imereti Medieval Churches & Villages", duration: "Full Day", price: 75, included: ["Lunch", "Transport"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "rosa",
+    name: "Rosa Mamani",
+    country: "Peru",
+    region: "Lake Titicaca islands & Puno altiplano",
+    flag: "🇵🇪",
+    speciality: "Altiplano & island community guide",
+    promise: "I will take you to an island on the highest lake in the world where people live exactly as they did 500 years ago. And they will feed you.",
+    bio: "Rosa is Aymara, born on the shores of Lake Titicaca. She guides travellers beyond the well-known Uros floating islands to the smaller, rarely visited communities on Taquile and Anapia islands — places where the Aymara language and textile traditions are still fully alive.",
+    languages: ["Aymara", "Quechua", "Spanish", "English"],
+    experienceYears: 15,
+    certifications: ["Aymara Heritage Specialist", "Community Tourism Lead"],
+    topHiddenGems: ["Anapia Island", "Pre-Inca Altiplano ruins"],
+    bestFor: ["Culture seekers", "Textile lovers", "Slow travellers"],
+    toursFrom: 85,
+    rating: 4.97,
+    reviewsCount: 88,
+    image: "https://picsum.photos/seed/rosa-guide/800/1000",
+    themeColor: "from-red-700 to-blue-800",
+    mapX: 29,
+    mapY: 70,
+    lat: -15.8402,
+    lng: -70.0212,
+    photos: [
+      { caption: "Traditional weaving on the shores of Titicaca", gradient: "bg-linear-to-br from-pink-600 to-blue-800", url: "https://picsum.photos/seed/titicaca-weaving/1200/800" },
+      { caption: "A hidden pre-Inca site on the Altiplano", gradient: "bg-linear-to-br from-orange-700 to-stone-800", url: "https://picsum.photos/seed/altiplano-ruins/1200/800" }
+    ],
+    tours: [
+      { name: "Titicaca Hidden Island Communities", duration: "Full Day", price: 85, included: ["Boat Transport", "Family Lunch"] },
+      { name: "Altiplano Pre-Inca Trail", duration: "Full Day", price: 95, included: ["Picnic", "Transport"] },
+      { name: "Aymara Textile & Ceremony Day", duration: "Full Day", price: 80, included: ["Workshop", "Lunch"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "miguel",
+    name: "Miguel Condori",
+    country: "Peru",
+    region: "Northern Peru — Chachapoyas & Kuelap highlands",
+    flag: "🇵🇪",
+    speciality: "Cloud forest & lost civilisation guide",
+    promise: "The Inca built Machu Picchu. But there was another civilisation in the clouds above them that most people have never heard of. I will take you there.",
+    bio: "Miguel was born near Chachapoyas and has been exploring the cloud forest ruins of northern Peru since childhood. He specialises in the Chachapoya civilisation — an ancient culture that predates and rivalled the Inca, and whose cliff sarcophagi remain almost entirely off the tourist circuit.",
+    languages: ["Spanish", "English"],
+    experienceYears: 18,
+    certifications: ["Archaeological Guide", "Wilderness First Aid"],
+    topHiddenGems: ["Kuelap fortress", "Chachapoya sarcophagi"],
+    bestFor: ["History lovers", "Hikers", "Adventure seekers"],
+    toursFrom: 110,
+    rating: 4.95,
+    reviewsCount: 71,
+    image: "https://picsum.photos/seed/miguel-guide/800/1000",
+    themeColor: "from-emerald-700 to-stone-800",
+    mapX: 27,
+    mapY: 65,
+    lat: -6.2294,
+    lng: -77.8728,
+    photos: [
+      { caption: "The massive stone walls of Kuelap fortress", gradient: "bg-linear-to-br from-stone-600 to-emerald-900", url: "https://picsum.photos/seed/kuelap/1200/800" },
+      { caption: "Ancient sarcophagi perched on a sheer cliff", gradient: "bg-linear-to-br from-slate-500 to-stone-800", url: "https://picsum.photos/seed/sarcophagi/1200/800" }
+    ],
+    tours: [
+      { name: "Kuelap & Hidden Chachapoya Ruins", duration: "Full Day", price: 110, included: ["Lunch", "Entry Fees"] },
+      { name: "Cloud Forest Sarcophagi Cliff Trek", duration: "Full Day", price: 130, included: ["Transport", "Picnic"] },
+      { name: "Northern Peru 3-Day Expedition", duration: "3 Days", price: 380, included: ["Accommodation", "All Meals", "Transport"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "yonas",
+    name: "Yonas Tesfaye",
+    country: "Ethiopia",
+    region: "Gondar & Blue Nile highlands",
+    flag: "🇪🇹",
+    speciality: "Royal heritage & highland trail guide",
+    promise: "Ethiopia had an emperor and a royal court when most of Europe was still in the dark ages. I will take you to the castles they left behind, and to the monks who still guard what came before.",
+    bio: "Yonas was raised in Gondar, the former royal capital of Ethiopia. He specialises in access to Ethiopian Orthodox monasteries on islands in Lake Tana that are closed to most visitors, and in multi-day treks along the Blue Nile gorge — one of Africa's most dramatic landscapes.",
+    languages: ["Amharic", "Tigrinya", "English"],
+    experienceYears: 14,
+    certifications: ["Heritage Specialist", "Mountain Guide"],
+    topHiddenGems: ["Gondar royal castles", "Blue Nile gorge"],
+    bestFor: ["History buffs", "Hikers", "Spiritual travellers"],
+    toursFrom: 85,
+    rating: 4.93,
+    reviewsCount: 49,
+    image: "https://picsum.photos/seed/yonas-guide/800/1000",
+    themeColor: "from-red-800 to-emerald-900",
+    mapX: 60,
+    mapY: 51,
+    lat: 12.6000,
+    lng: 37.4667,
+    photos: [
+      { caption: "The royal castles of Gondar at sunset", gradient: "bg-linear-to-br from-orange-800 to-stone-900", url: "https://picsum.photos/seed/gondar-castles/1200/800" },
+      { caption: "The dramatic depths of the Blue Nile gorge", gradient: "bg-linear-to-br from-stone-500 to-blue-900", url: "https://picsum.photos/seed/blue-nile/1200/800" }
+    ],
+    tours: [
+      { name: "Gondar Royal Heritage & Hidden Churches", duration: "Full Day", price: 85, included: ["Entry Fees", "Lunch"] },
+      { name: "Blue Nile Gorge Trek", duration: "2 Days", price: 120, included: ["Camping Gear", "All Meals"] },
+      { name: "Lake Tana Monastery Island Access", duration: "Full Day", price: 95, included: ["Boat Transport", "Permits"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "almaz",
+    name: "Almaz Girma",
+    country: "Ethiopia",
+    region: "Harar & eastern Ethiopia",
+    flag: "🇪🇹",
+    speciality: "Walled city & wildlife guide",
+    promise: "I will sit you down in a courtyard that has hosted coffee ceremonies since the 13th century. And later, I will watch you feed raw meat to a wild hyena by hand.",
+    bio: "Almaz grew up in Harar — one of the oldest walled cities in Africa. She guides travellers through Harar's 368 alleyways, into Harari households that have practised the same coffee ceremonies for centuries, and to the city's most extraordinary ritual — the nightly wild hyena feeding.",
+    languages: ["Harari", "Amharic", "Somali", "English"],
+    experienceYears: 9,
+    certifications: ["Cultural Heritage Guide", "Wildlife Safety Certified"],
+    topHiddenGems: ["Harar old city", "Hyena feeding ceremony"],
+    bestFor: ["Culture seekers", "Animal lovers", "Urban explorers"],
+    toursFrom: 80,
+    rating: 4.91,
+    reviewsCount: 38,
+    image: "https://picsum.photos/seed/almaz-guide/800/1000",
+    themeColor: "from-amber-600 to-red-900",
+    mapX: 61,
+    mapY: 53,
+    lat: 9.3111,
+    lng: 42.1278,
+    photos: [
+      { caption: "The colorful alleyways of Harar's walled city", gradient: "bg-linear-to-br from-pink-500 to-amber-600", url: "https://picsum.photos/seed/harar-alley/1200/800" },
+      { caption: "The ancient ritual of hyena feeding", gradient: "bg-linear-to-br from-indigo-900 to-black", url: "https://picsum.photos/seed/hyena-feeding/1200/800" }
+    ],
+    tours: [
+      { name: "Harar Old City Deep Walk", duration: "Full Day", price: 80, included: ["Coffee Ceremony", "Lunch"] },
+      { name: "Hyena Feeding Ceremony Night Experience", duration: "Evening", price: 90, included: ["Transport", "Safety Briefing"] },
+      { name: "Eastern Highlands Trade Route Day", duration: "Full Day", price: 85, included: ["Transport", "Picnic"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "sofia",
+    name: "Sofia Rodrigues",
+    country: "Portugal",
+    region: "Alentejo plains & Atlantic coast villages",
+    flag: "🇵🇹",
+    speciality: "Rural Portugal & cork forest guide",
+    promise: "Portugal is famous for its coast. But its interior holds stone circles older than Stonehenge and villages where nothing has changed in a century. I will take you there.",
+    bio: "Sofia was born in a small Alentejo village and grew up between cork forests and Roman ruins. She takes travellers beyond Lisbon and the Algarve into the vast, silent interior of Portugal — to villages of whitewashed houses and megalithic stone circles.",
+    languages: ["Portuguese", "Spanish", "English"],
+    experienceYears: 12,
+    certifications: ["Regional Heritage Guide", "Sustainable Tourism Certified"],
+    topHiddenGems: ["Alentejo megalithic stones", "Hidden Atlantic beaches"],
+    bestFor: ["Nature lovers", "History buffs", "Slow travellers"],
+    toursFrom: 70,
+    rating: 4.97,
+    reviewsCount: 134,
+    image: "https://picsum.photos/seed/sofia-guide/800/1000",
+    themeColor: "from-blue-800 to-emerald-900",
+    mapX: 44,
+    mapY: 32,
+    lat: 38.5714,
+    lng: -7.9135,
+    photos: [
+      { caption: "Ancient megalithic stones in the Alentejo plains", gradient: "bg-linear-to-br from-stone-400 to-emerald-900", url: "https://picsum.photos/seed/alentejo-stones/1200/800" },
+      { caption: "A hidden cove on the wild Atlantic coast", gradient: "bg-linear-to-br from-blue-600 to-cyan-900", url: "https://picsum.photos/seed/portugal-beach/1200/800" }
+    ],
+    tours: [
+      { name: "Alentejo Megalithic & Village Day", duration: "Full Day", price: 70, included: ["Lunch", "Entry Fees"] },
+      { name: "Atlantic Cliff Trail & Hidden Beach", duration: "Half Day", price: 65, included: ["Picnic", "Transport"] },
+      { name: "Cork Forest & Olive Estate", duration: "Full Day", price: 80, included: ["Tasting", "Estate Tour"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "joao",
+    name: "João Ferreira",
+    country: "Portugal",
+    region: "Douro Valley & Trás-os-Montes",
+    flag: "🇵🇹",
+    speciality: "Wild north Portugal & ancient wine guide",
+    promise: "Trás-os-Montes is a place most Portuguese people have never visited. There are wolves in the forest and pre-Roman villages in the mountains. I will take you to both.",
+    bio: "João is from Trás-os-Montes — the 'land beyond the mountains' in Portugal's wild northeast. He leads travellers through schist villages built directly into the rock and to Douro wine terraces so steep they can only be harvested by hand.",
+    languages: ["Portuguese", "English"],
+    experienceYears: 15,
+    certifications: ["Mountain Guide", "Douro Wine Expert"],
+    topHiddenGems: ["Schist villages", "Iberian wolf territory"],
+    bestFor: ["Adventure seekers", "Wine lovers", "Wildlife enthusiasts"],
+    toursFrom: 85,
+    rating: 4.94,
+    reviewsCount: 97,
+    image: "https://picsum.photos/seed/joao-guide/800/1000",
+    themeColor: "from-orange-800 to-stone-900",
+    mapX: 45,
+    mapY: 31,
+    lat: 41.1579,
+    lng: -8.6291,
+    photos: [
+      { caption: "A schist village built into the mountain rock", gradient: "bg-linear-to-br from-stone-600 to-slate-900", url: "https://picsum.photos/seed/schist-village/1200/800" },
+      { caption: "Steep wine terraces of the Douro Valley", gradient: "bg-linear-to-br from-emerald-700 to-orange-900", url: "https://picsum.photos/seed/douro-valley/1200/800" }
+    ],
+    tours: [
+      { name: "Schist Village & Ancient Terraces", duration: "Full Day", price: 85, included: ["Wine Tasting", "Lunch"] },
+      { name: "Montesinho Wolf Territory Trek", duration: "Full Day", price: 95, included: ["Safety Gear", "Picnic"] },
+      { name: "Douro Wild Valley 2-Day", duration: "2 Days", price: 210, included: ["Accommodation", "All Meals"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "valentina",
+    name: "Valentina Torres",
+    country: "Colombia",
+    region: "Coffee region & Andes cloud forest",
+    flag: "🇨🇴",
+    speciality: "Coffee culture & cloud forest guide",
+    promise: "I will take you to a coffee finca where the family has been farming the same mountain since 1890, and into a forest so full of hummingbirds that they will land on your hand.",
+    bio: "Valentina was born in the coffee region of Quindío and grew up on her family's coffee finca. She takes small groups to family-owned coffee farms that have never hosted a commercial tour and into cloud forests full of hummingbirds.",
+    languages: ["Spanish", "English"],
+    experienceYears: 10,
+    certifications: ["Coffee Quality Expert", "Bird Watching Guide"],
+    topHiddenGems: ["Private coffee fincas", "Hummingbird sanctuaries"],
+    bestFor: ["Coffee lovers", "Bird watchers", "Nature lovers"],
+    toursFrom: 75,
+    rating: 4.98,
+    reviewsCount: 143,
+    image: "https://picsum.photos/seed/valentina-guide/800/1000",
+    themeColor: "from-amber-600 to-emerald-900",
+    mapX: 28,
+    mapY: 55,
+    lat: 4.6243,
+    lng: -75.6378,
+    photos: [
+      { caption: "A hummingbird in the misty cloud forest", gradient: "bg-linear-to-br from-teal-400 to-emerald-900", url: "https://picsum.photos/seed/hummingbird/1200/800" },
+      { caption: "The towering wax palms of Cocora Valley", gradient: "bg-linear-to-br from-emerald-500 to-blue-400", url: "https://picsum.photos/seed/cocora/1200/800" }
+    ],
+    tours: [
+      { name: "Family Coffee Finca Immersion", duration: "Full Day", price: 75, included: ["Coffee Tasting", "Lunch"] },
+      { name: "Cloud Forest & Hummingbird Trail", duration: "Full Day", price: 80, included: ["Binoculars", "Picnic"] },
+      { name: "Cocora Valley Hidden Trail", duration: "Full Day", price: 70, included: ["Transport", "Lunch"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "andres",
+    name: "Andrés Medina",
+    country: "Colombia",
+    region: "Caribbean coast — beyond Cartagena",
+    flag: "🇨🇴",
+    speciality: "Lost Caribbean coast & indigenous guide",
+    promise: "The Caribbean coast of Colombia extends far beyond Cartagena. I will take you to a beach with no name and to a community that has chosen to remain invisible to the modern world.",
+    bio: "Andrés grew up in Santa Marta and has spent 15 years exploring Colombia's Caribbean coast. He has established relationships with Kogui indigenous communities in the Sierra Nevada and arranges respectful, small-group visits.",
+    languages: ["Spanish", "English"],
+    experienceYears: 15,
+    certifications: ["Indigenous Culture Specialist", "Kayak Instructor"],
+    topHiddenGems: ["Kogui communities", "Hidden Caribbean beaches"],
+    bestFor: ["Adventure seekers", "Culture seekers", "Beach lovers"],
+    toursFrom: 80,
+    rating: 4.95,
+    reviewsCount: 89,
+    image: "https://picsum.photos/seed/andres-guide/800/1000",
+    themeColor: "from-cyan-600 to-amber-700",
+    mapX: 29,
+    mapY: 53,
+    lat: 11.2408,
+    lng: -74.1990,
+    photos: [
+      { caption: "A pristine beach with no name", gradient: "bg-linear-to-br from-cyan-400 to-blue-600", url: "https://picsum.photos/seed/colombia-beach/1200/800" },
+      { caption: "Meeting with the Kogui in the Sierra Nevada", gradient: "bg-linear-to-br from-emerald-800 to-stone-800", url: "https://picsum.photos/seed/kogui/1200/800" }
+    ],
+    tours: [
+      { name: "Kogui Community & Sierra Nevada", duration: "Full Day", price: 80, included: ["Community Gift", "Lunch"] },
+      { name: "Mangrove Kayak & Hidden Beach", duration: "Full Day", price: 75, included: ["Kayak Gear", "Picnic"] },
+      { name: "Lost Caribbean Trail", duration: "Full Day", price: 95, included: ["Boat Access", "Lunch"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "arben",
+    name: "Arben Hoxha",
+    country: "Albania",
+    region: "Albanian Alps & Theth valley",
+    flag: "🇦🇱",
+    speciality: "Albanian Alps wilderness guide",
+    promise: "The Albanian Alps are what the Swiss Alps looked like before the tourists arrived. Stone towers, ancient law, silence, and mountains that go on forever. I will take you there.",
+    bio: "Arben was born in Shkodër and has been guiding in the Albanian Alps for over a decade. He takes small groups into the Theth and Valbona valleys where stone tower houses still stand intact.",
+    languages: ["Albanian", "Italian", "English"],
+    experienceYears: 12,
+    certifications: ["Mountain Guide", "First Aid Certified"],
+    topHiddenGems: ["Theth valley", "Blood feud towers"],
+    bestFor: ["Hikers", "Adventure seekers", "History buffs"],
+    toursFrom: 60,
+    rating: 4.96,
+    reviewsCount: 67,
+    image: "https://picsum.photos/seed/arben-guide/800/1000",
+    themeColor: "from-red-900 to-stone-800",
+    mapX: 51,
+    mapY: 33,
+    lat: 42.3917,
+    lng: 19.7750,
+    photos: [
+      { caption: "The dramatic peaks of the Accursed Mountains", gradient: "bg-linear-to-br from-slate-400 to-indigo-900", url: "https://picsum.photos/seed/albanian-alps/1200/800" },
+      { caption: "A traditional stone tower in Theth", gradient: "bg-linear-to-br from-stone-600 to-slate-900", url: "https://picsum.photos/seed/stone-tower/1200/800" }
+    ],
+    tours: [
+      { name: "Theth Valley Hidden Walk", duration: "Full Day", price: 60, included: ["Lunch", "History Talk"] },
+      { name: "Accursed Mountains 2-Day Trek", duration: "2 Days", price: 140, included: ["Guesthouse Stay", "All Meals"] },
+      { name: "Blood Feud Towers & Mountain Culture", duration: "Full Day", price: 65, included: ["Entry Fees", "Lunch"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "elona",
+    name: "Elona Bushati",
+    country: "Albania",
+    region: "Albanian Riviera & ancient Butrint",
+    flag: "🇦🇱",
+    speciality: "Coastal & ancient civilisation guide",
+    promise: "Albania has 500 km of coast and most of it has no sunloungers yet. I will show you the beaches, the ruins, and the city of a thousand windows before everyone else arrives.",
+    bio: "Elona grew up in Sarandë and has watched the Albanian Riviera slowly appear on travellers' maps. She guides visitors to the coves and beaches that the new tourism wave hasn't reached yet.",
+    languages: ["Albanian", "Greek", "English"],
+    experienceYears: 8,
+    certifications: ["Heritage Guide", "Coastal Safety Certified"],
+    topHiddenGems: ["Butrint ruins", "Berat old city"],
+    bestFor: ["Beach lovers", "History buffs", "Culture seekers"],
+    toursFrom: 55,
+    rating: 4.92,
+    reviewsCount: 51,
+    image: "https://picsum.photos/seed/elona-guide/800/1000",
+    themeColor: "from-cyan-600 to-blue-800",
+    mapX: 52,
+    mapY: 34,
+    lat: 39.8750,
+    lng: 20.0000,
+    photos: [
+      { caption: "The ancient ruins of Butrint", gradient: "bg-linear-to-br from-emerald-800 to-stone-700", url: "https://picsum.photos/seed/butrint/1200/800" },
+      { caption: "Crystal clear coves of the Albanian Riviera", gradient: "bg-linear-to-br from-cyan-400 to-blue-600", url: "https://picsum.photos/seed/albania-cove/1200/800" }
+    ],
+    tours: [
+      { name: "Albanian Riviera Hidden Coves", duration: "Full Day", price: 55, included: ["Boat Access", "Picnic"] },
+      { name: "Butrint Ancient City & Blue Eye", duration: "Full Day", price: 65, included: ["Entry Fees", "Transport"] },
+      { name: "Berat Ottoman Heritage Walk", duration: "Full Day", price: 60, included: ["Lunch", "History Talk"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "made",
+    name: "Made Suastika",
+    country: "Indonesia",
+    region: "Bali interior & East Java volcanoes",
+    flag: "🇮🇩",
+    speciality: "Bali spiritual & highland guide",
+    promise: "The Bali you think you know is the southern 10%. I will take you to the 90% that the tourists haven't found — where the ceremonies are real and the silence is complete.",
+    bio: "Made was born into a Balinese Hindu priest family in Ubud's highland villages. He guides travellers away from Bali's southern tourist circuit into the island's interior.",
+    languages: ["Balinese", "Indonesian", "English"],
+    experienceYears: 18,
+    certifications: ["Spiritual Heritage Guide", "Volcano Trekking Specialist"],
+    topHiddenGems: ["Hidden rice terraces", "Water temple ceremonies"],
+    bestFor: ["Spiritual seekers", "Nature lovers", "Hikers"],
+    toursFrom: 65,
+    rating: 4.97,
+    reviewsCount: 178,
+    image: "https://picsum.photos/seed/made-guide/800/1000",
+    themeColor: "from-emerald-800 to-red-900",
+    mapX: 84,
+    mapY: 59,
+    lat: -8.4095,
+    lng: 115.1889,
+    photos: [
+      { caption: "A sacred ceremony at a hidden water temple", gradient: "bg-linear-to-br from-teal-500 to-emerald-900", url: "https://picsum.photos/seed/bali-ceremony/1200/800" },
+      { caption: "The sulfurous crater of Ijen volcano", gradient: "bg-linear-to-br from-cyan-400 to-blue-900", url: "https://picsum.photos/seed/ijen/1200/800" }
+    ],
+    tours: [
+      { name: "Bali Highland Ceremony & Village", duration: "Full Day", price: 65, included: ["Ceremony Access", "Lunch"] },
+      { name: "Hidden Rice Terrace Dawn Walk", duration: "Half Day", price: 55, included: ["Breakfast", "Guide"] },
+      { name: "East Java Volcano Farmer Route", duration: "Overnight", price: 120, included: ["Transport", "All Meals", "Safety Gear"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "rizky",
+    name: "Rizky Pratama",
+    country: "Indonesia",
+    region: "Sulawesi & Flores — eastern Indonesia",
+    flag: "🇮🇩",
+    speciality: "Eastern Indonesia islands & culture guide",
+    promise: "Eastern Indonesia makes Bali look crowded. I will take you to a funeral that celebrates death with music and buffalo, and to an island where you will be the only visitor.",
+    bio: "Rizky grew up between Makassar and Flores and has spent years exploring eastern Indonesia's islands. He arranges access to Toraja funeral ceremonies and leads boat expeditions.",
+    languages: ["Indonesian", "Torajan", "English"],
+    experienceYears: 12,
+    certifications: ["Cultural Anthropology Specialist", "Boat Safety Certified"],
+    topHiddenGems: ["Toraja death ceremonies", "Remote Komodo islands"],
+    bestFor: ["Culture seekers", "Adventure seekers", "Island hoppers"],
+    toursFrom: 90,
+    rating: 4.94,
+    reviewsCount: 82,
+    image: "https://picsum.photos/seed/rizky-guide/800/1000",
+    themeColor: "from-orange-800 to-red-900",
+    mapX: 86,
+    mapY: 61,
+    lat: -2.9896,
+    lng: 119.8962,
+    photos: [
+      { caption: "The unique architecture of Toraja houses", gradient: "bg-linear-to-br from-orange-700 to-stone-900", url: "https://picsum.photos/seed/toraja/1200/800" },
+      { caption: "A Komodo dragon on a deserted beach", gradient: "bg-linear-to-br from-stone-500 to-emerald-900", url: "https://picsum.photos/seed/komodo/1200/800" }
+    ],
+    tours: [
+      { name: "Toraja Ceremony Access & Village", duration: "2 Days", price: 90, included: ["Homestay", "All Meals"] },
+      { name: "Komodo Off-Trail Island Expedition", duration: "Full Day", price: 130, included: ["Boat Access", "Lunch", "Park Fees"] },
+      { name: "Flores Traditional Village Circuit", duration: "2 Days", price: 110, included: ["Transport", "All Meals"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "zawadi",
+    name: "Zawadi Mwangi",
+    country: "Tanzania",
+    region: "Zanzibar hinterland & Stone Town",
+    flag: "🇹🇿",
+    speciality: "Zanzibar heritage & spice guide",
+    promise: "Stone Town has been a crossroads of Africa, Arabia, India, and Europe for a thousand years. Most visitors see the surface. I will take you into the layers.",
+    bio: "Zawadi was born in Stone Town, Zanzibar. She guides travellers through the hidden quarters of Stone Town — the coral-stone alleyways, the carved door workshops, the rooftop terraces.",
+    languages: ["Swahili", "Arabic", "English"],
+    experienceYears: 15,
+    certifications: ["UNESCO Heritage Guide", "Spice Specialist"],
+    topHiddenGems: ["Stone Town hidden quarters", "Family spice farms"],
+    bestFor: ["History buffs", "Foodies", "Culture seekers"],
+    toursFrom: 70,
+    rating: 4.96,
+    reviewsCount: 91,
+    image: "https://picsum.photos/seed/zawadi-guide/800/1000",
+    themeColor: "from-blue-800 to-emerald-900",
+    mapX: 59,
+    mapY: 64,
+    lat: -6.1659,
+    lng: 39.2026,
+    photos: [
+      { caption: "Intricate carved doors of Old Stone Town", gradient: "bg-linear-to-br from-stone-600 to-amber-900", url: "https://picsum.photos/seed/stonetown/1200/800" },
+      { caption: "A traditional dhow sailing at dawn", gradient: "bg-linear-to-br from-cyan-400 to-blue-900", url: "https://picsum.photos/seed/dhow/1200/800" }
+    ],
+    tours: [
+      { name: "Stone Town Hidden Quarters Walk", duration: "Full Day", price: 70, included: ["Lunch", "History Talk"] },
+      { name: "Family Spice Farm & Swahili Cooking", duration: "Full Day", price: 65, included: ["Cooking Class", "Lunch"] },
+      { name: "Dawn Dhow & North Coast Sandbank", duration: "Full Day", price: 80, included: ["Boat Access", "Breakfast"] }
+    ],
+    reviews: []
+  },
+  {
+    id: "baraka",
+    name: "Baraka Kimaro",
+    country: "Tanzania",
+    region: "Northern Tanzania — beyond the Serengeti",
+    flag: "🇹🇿",
+    speciality: "Northern wilderness & Maasai culture guide",
+    promise: "The Serengeti is magnificent. But I will take you somewhere in Tanzania where there is no other vehicle, no lodge in sight, and the wildlife has never learned to be afraid of people.",
+    bio: "Baraka is Maasai, born in a boma near Ngorongoro. He leads travellers on walking safaris through Tanzania's lesser-known parks and conservation areas.",
+    languages: ["Maa", "Swahili", "English"],
+    experienceYears: 18,
+    certifications: ["Maasai Heritage Lead", "Walking Safari Specialist"],
+    topHiddenGems: ["Ngorongoro hidden trails", "Maasai communities"],
+    bestFor: ["Wildlife enthusiasts", "Adventure seekers", "Culture seekers"],
+    toursFrom: 95,
+    rating: 4.93,
+    reviewsCount: 63,
+    image: "https://picsum.photos/seed/baraka-guide/800/1000",
+    themeColor: "from-emerald-800 to-stone-900",
+    mapX: 58,
+    mapY: 66,
+    lat: -3.2333,
+    lng: 35.4833,
+    photos: [
+      { caption: "A walking safari in the Maasai Steppe", gradient: "bg-linear-to-br from-emerald-700 to-orange-900", url: "https://picsum.photos/seed/maasai-steppe/1200/800" },
+      { caption: "Elephants in the wild Tarangire wilderness", gradient: "bg-linear-to-br from-stone-500 to-emerald-900", url: "https://picsum.photos/seed/tarangire/1200/800" }
+    ],
+    tours: [
+      { name: "Tarangire Walking Safari", duration: "Full Day", price: 95, included: ["Safety Scout", "Lunch"] },
+      { name: "Maasai Community & Steppe Walk", duration: "Full Day", price: 85, included: ["Community Gift", "Lunch"] },
+      { name: "Kilimanjaro North Slope Hidden Trail", duration: "Full Day", price: 110, included: ["Transport", "Picnic"] }
+    ],
+    reviews: []
   }
 ];
 
@@ -351,15 +1113,54 @@ export const HIDDEN_GEMS: HiddenGem[] = [
     url: "https://res.cloudinary.com/drfswzxab/image/upload/q_auto/f_auto/v1776091653/e1629b9017c5290edd_hellsteaming_alamy_dwii69.jpg",
     description: "Steam rising from a nameless mountain spring",
     country: "Japan"
+  },
+  {
+    id: "10",
+    flag: "🇵🇹",
+    gradient: "bg-linear-to-br from-stone-400 via-emerald-900 to-slate-900",
+    url: "https://picsum.photos/seed/alentejo-stones/800/600",
+    description: "Stone circles older than Stonehenge",
+    country: "Portugal"
+  },
+  {
+    id: "11",
+    flag: "🇨🇴",
+    gradient: "bg-linear-to-br from-teal-400 via-emerald-900 to-blue-900",
+    url: "https://picsum.photos/seed/cocora/800/600",
+    description: "Towering palms in a valley of clouds",
+    country: "Colombia"
+  },
+  {
+    id: "12",
+    flag: "🇦🇱",
+    gradient: "bg-linear-to-br from-stone-600 via-slate-900 to-black",
+    url: "https://picsum.photos/seed/stone-tower/800/600",
+    description: "A tower built for silence and safety",
+    country: "Albania"
+  },
+  {
+    id: "13",
+    flag: "🇮🇩",
+    gradient: "bg-linear-to-br from-teal-500 via-emerald-900 to-green-950",
+    url: "https://picsum.photos/seed/bali-ceremony/800/600",
+    description: "A ceremony where the water is sacred",
+    country: "Indonesia"
+  },
+  {
+    id: "14",
+    flag: "🇹🇿",
+    gradient: "bg-linear-to-br from-stone-600 via-amber-900 to-orange-950",
+    url: "https://picsum.photos/seed/stonetown/800/600",
+    description: "Alleyways that hold a thousand years of stories",
+    country: "Tanzania"
   }
 ];
 
 export const COMING_SOON_COUNTRIES = [
-  { name: "Iceland", flag: "🇮🇸", mapX: 45, mapY: 15 },
-  { name: "Vietnam", flag: "🇻🇳", mapX: 80, mapY: 48 },
-  { name: "Portugal", flag: "🇵🇹", mapX: 44, mapY: 32 },
-  { name: "Chile", flag: "🇨🇱", mapX: 30, mapY: 80 },
-  { name: "Namibia", flag: "🇳🇦", mapX: 52, mapY: 75 }
+  { name: "Iceland", flag: "🇮🇸", mapX: 45, mapY: 15, lat: 64.9631, lng: -19.0208 },
+  { name: "Vietnam", flag: "🇻🇳", mapX: 80, mapY: 48, lat: 14.0583, lng: 108.2772 },
+  { name: "Chile", flag: "🇨🇱", mapX: 30, mapY: 80, lat: -35.6751, lng: -71.5430 },
+  { name: "Namibia", flag: "🇳🇦", mapX: 52, mapY: 75, lat: -22.9576, lng: 18.4904 }
 ];
 
 export const SYSTEM_PROMPT = `You are the AI Match assistant inside the Localens app. Your goal is to connect travellers with verified local guides who offer hidden gem experiences.

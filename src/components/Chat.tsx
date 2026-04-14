@@ -4,6 +4,7 @@ import { Send, Sparkles, User, Bot, Loader2, ArrowRight, Star } from "lucide-rea
 import { Link } from "react-router-dom";
 import { GoogleGenAI } from "@google/genai";
 import { SYSTEM_PROMPT, GUIDES } from "../constants";
+import { useSettings } from "../contexts/SettingsContext";
 
 let aiInstance: GoogleGenAI | null = null;
 
@@ -24,19 +25,20 @@ interface Message {
   matchedGuideId?: string;
 }
 
-const SUGGESTED_PROMPTS = [
-  "Hidden gems in Lebanon",
-  "Off the beaten path in Japan",
-  "Ancient ruins no one visits",
-  "Most unique guide on the platform",
-  "I want to sleep somewhere with no WiFi"
-];
-
 export default function Chat() {
+  const { t, language } = useSettings();
+
+  const SUGGESTED_PROMPTS = [
+    t("chat.suggested.1"),
+    t("chat.suggested.2"),
+    t("chat.suggested.3"),
+    t("chat.suggested.4"),
+    t("chat.suggested.5")
+  ];
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Welcome to Localens. I'm your AI Match assistant. Describe your dream trip, and I'll find the perfect local guide to show you the hidden gems most travellers never see."
+      content: t("chat.welcome")
     }
   ]);
   const [input, setInput] = useState("");
@@ -76,7 +78,7 @@ export default function Chat() {
         model: "gemini-3-flash-preview",
         contents,
         config: {
-          systemInstruction: SYSTEM_PROMPT,
+          systemInstruction: `${SYSTEM_PROMPT}\n\nIMPORTANT: The user's preferred language is ${language}. Please respond in ${language}.`,
         }
       });
       
@@ -126,8 +128,8 @@ export default function Chat() {
             <Sparkles className="w-5 h-5 text-brand-cream" />
           </div>
           <div>
-            <h3 className="font-serif text-lg font-semibold">AI Match Assistant</h3>
-            <p className="micro-label">Powered by Localens AI</p>
+            <h3 className="font-serif text-lg font-semibold">{t("chat.title")}</h3>
+            <p className="micro-label">{t("chat.subtitle")}</p>
           </div>
         </div>
       </div>
@@ -196,7 +198,7 @@ export default function Chat() {
                           to={`/guide/${guide.id}`}
                           className="w-full py-3 bg-brand-olive text-brand-cream rounded-full text-xs font-bold hover:bg-brand-olive/90 transition-all flex items-center justify-center gap-2"
                         >
-                          Book this guide <ArrowRight className="w-3 h-3" />
+                          {t("profile.book")} <ArrowRight className="w-3 h-3" />
                         </Link>
                       </div>
                     );
@@ -247,7 +249,7 @@ export default function Chat() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSend()}
-            placeholder="Describe your dream trip..."
+            placeholder={t("chat.placeholder")}
             className="w-full bg-white border border-brand-olive/20 rounded-full py-4 pl-6 pr-14 text-sm focus:outline-hidden focus:ring-2 focus:ring-brand-olive/20 transition-all"
           />
           <button
