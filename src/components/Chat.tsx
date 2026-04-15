@@ -65,7 +65,6 @@ export default function Chat() {
       const ai = getAI();
       
       // Gemini history must alternate User/Model and start with User.
-      // We manually construct the contents array including the current message.
       const contents = [
         ...messages.slice(1).map(m => ({
           role: m.role === "assistant" ? "model" : "user",
