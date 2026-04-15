@@ -16,6 +16,11 @@ import SafetyGuidelines from "./pages/SafetyGuidelines";
 import TermsOfService from "./pages/TermsOfService";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import { SettingsProvider, useSettings, Language, Currency } from "./contexts/SettingsContext";
+import { AuthProvider, useAuth } from "./contexts/AuthContext";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import { MyBookings, SavedGuides, GuideApplicationSuccess } from "./pages/AccountPages";
+import { LogOut, User as UserIcon, BookOpen, Heart as HeartIcon } from "lucide-react";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -126,7 +131,7 @@ function HomePage() {
                 <span className="micro-label text-brand-gold">{t("featured.badge")}</span>
               </div>
               <h2 className="text-5xl font-serif leading-tight">
-                {t("featured.title.1")}<span className="serif-italic text-brand-gold">{t("featured.title.highlight")}</span>{t("featured.title.2")}
+                {t("featured.title.1")}<span className="serif-italic text-brand-gold">{t("featured.title.highlight")}</span>
               </h2>
             </div>
             <Link to="/find-a-guide" className="text-sm font-bold uppercase tracking-widest text-brand-olive hover:text-brand-gold transition-colors flex items-center gap-2">
@@ -165,15 +170,19 @@ function HomePage() {
 
 function Navbar() {
   const { language, setLanguage, currency, setCurrency, t } = useSettings();
+  const { user, signOut } = useAuth();
   const [langOpen, setLangOpen] = useState(false);
   const [currOpen, setCurrOpen] = useState(false);
+  const [accountOpen, setAccountOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
   const currRef = useRef<HTMLDivElement>(null);
+  const accountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (langRef.current && !langRef.current.contains(event.target as Node)) setLangOpen(false);
       if (currRef.current && !currRef.current.contains(event.target as Node)) setCurrOpen(false);
+      if (accountRef.current && !accountRef.current.contains(event.target as Node)) setAccountOpen(false);
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
@@ -183,28 +192,14 @@ function Navbar() {
     { code: "EN", name: "English", flag: "🇺🇸" },
     { code: "FR", name: "Français", flag: "🇫🇷" },
     { code: "ES", name: "Español", flag: "🇪🇸" },
-    { code: "NL", name: "Nederlands", flag: "🇳🇱" },
-    { code: "JP", name: "日本語", flag: "🇯🇵" },
-    { code: "ET", name: "አማርኛ", flag: "🇪🇹" },
-    { code: "GE", name: "ქართული", flag: "🇬🇪" },
-    { code: "PT", name: "Português", flag: "🇵🇹" },
+    { code: "DE", name: "Deutsch", flag: "🇩🇪" },
     { code: "AR", name: "العربية", flag: "🇱🇧" },
-    { code: "SQ", name: "Shqip", flag: "🇦🇱" },
-    { code: "ID", name: "Bahasa Indonesia", flag: "🇮🇩" },
-    { code: "SW", name: "Kiswahili", flag: "🇹🇿" },
   ];
 
   const currencies: { code: Currency; name: string; symbol: string }[] = [
     { code: "USD", name: "US Dollar", symbol: "$" },
     { code: "EUR", name: "Euro", symbol: "€" },
     { code: "GBP", name: "British Pound", symbol: "£" },
-    { code: "JPY", name: "Japanese Yen", symbol: "¥" },
-    { code: "GEL", name: "Georgian Lari", symbol: "₾" },
-    { code: "ETB", name: "Ethiopian Birr", symbol: "Br" },
-    { code: "COP", name: "Colombian Peso", symbol: "$" },
-    { code: "ALL", name: "Albanian Lek", symbol: "L" },
-    { code: "IDR", name: "Indonesian Rupiah", symbol: "Rp" },
-    { code: "TZS", name: "Tanzanian Shilling", symbol: "Sh" },
   ];
 
   return (
@@ -294,9 +289,68 @@ function Navbar() {
               </AnimatePresence>
             </div>
           </div>
-          <button className="bg-brand-olive text-brand-cream px-6 py-2.5 rounded-full text-sm font-medium hover:bg-brand-olive/90 transition-all shadow-sm">
-            {t("nav.sign_in")}
-          </button>
+
+          {user ? (
+            <div className="relative" ref={accountRef}>
+              <button 
+                onClick={() => setAccountOpen(!accountOpen)}
+                className="flex items-center gap-2 pl-2 pr-4 py-1.5 bg-brand-olive/5 hover:bg-brand-olive/10 rounded-full transition-all group"
+              >
+                <div className="w-8 h-8 bg-brand-olive text-brand-cream rounded-full flex items-center justify-center font-bold text-sm">
+                  {user.initials}
+                </div>
+                <span className="text-sm font-bold text-brand-ink/70 group-hover:text-brand-ink">My account</span>
+                <ChevronDown className={`w-3 h-3 text-brand-ink/30 transition-transform ${accountOpen ? 'rotate-180' : ''}`} />
+              </button>
+              <AnimatePresence>
+                {accountOpen && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute right-0 mt-2 w-56 glass-panel rounded-2xl p-2 shadow-2xl border-brand-gold/20"
+                  >
+                    <div className="px-4 py-3 border-b border-brand-olive/5 mb-1">
+                      <p className="text-xs font-bold uppercase tracking-wider text-brand-ink/30">Signed in as</p>
+                      <p className="text-sm font-bold text-brand-ink truncate">{user.email}</p>
+                    </div>
+                    <Link 
+                      to="/my-bookings" 
+                      onClick={() => setAccountOpen(false)}
+                      className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm text-brand-ink/70 hover:bg-brand-olive/5 hover:text-brand-ink transition-colors"
+                    >
+                      <BookOpen className="w-4 h-4 text-brand-ink/30" />
+                      <span>My bookings</span>
+                    </Link>
+                    <Link 
+                      to="/saved-guides" 
+                      onClick={() => setAccountOpen(false)}
+                      className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm text-brand-ink/70 hover:bg-brand-olive/5 hover:text-brand-ink transition-colors"
+                    >
+                      <HeartIcon className="w-4 h-4 text-brand-ink/30" />
+                      <span>Saved guides</span>
+                    </Link>
+                    <button 
+                      onClick={() => { signOut(); setAccountOpen(false); }}
+                      className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm text-red-600 hover:bg-red-50 transition-colors mt-1"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      <span>Sign out</span>
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ) : (
+            <div className="flex items-center gap-3">
+              <Link to="/signin" className="text-sm font-bold text-brand-ink/60 hover:text-brand-gold transition-colors px-2">
+                {t("nav.sign_in")}
+              </Link>
+              <Link to="/signup" className="bg-gradient-to-r from-[#FFB347] to-[#FF4E50] text-white px-6 py-2.5 rounded-full text-sm font-bold hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md shadow-coral/20">
+                Sign up
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </nav>
@@ -357,29 +411,35 @@ function Footer() {
 export default function App() {
   return (
     <SettingsProvider>
-      <Router>
-        <ScrollToTop />
-        <div className="min-h-screen flex flex-col">
-          <Navbar />
+      <AuthProvider>
+        <Router>
+          <ScrollToTop />
+          <div className="min-h-screen flex flex-col">
+            <Navbar />
 
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/find-a-guide" element={<FindAGuide />} />
-            <Route path="/guide/:id" element={<GuideProfile />} />
-            <Route path="/hidden-gems" element={<HiddenGems />} />
-            <Route path="/how-it-works" element={<HowItWorks />} />
-            <Route path="/world-map" element={<WorldMap />} />
-            <Route path="/guide-application" element={<GuideApplication />} />
-            <Route path="/help-centre" element={<HelpCentre />} />
-            <Route path="/safety-guidelines" element={<SafetyGuidelines />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/find-a-guide" element={<FindAGuide />} />
+              <Route path="/guide/:id" element={<GuideProfile />} />
+              <Route path="/hidden-gems" element={<HiddenGems />} />
+              <Route path="/how-it-works" element={<HowItWorks />} />
+              <Route path="/world-map" element={<WorldMap />} />
+              <Route path="/guide-application" element={<GuideApplicationSuccess />} />
+              <Route path="/help-centre" element={<HelpCentre />} />
+              <Route path="/safety-guidelines" element={<SafetyGuidelines />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/signin" element={<SignIn />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/my-bookings" element={<MyBookings />} />
+              <Route path="/saved-guides" element={<SavedGuides />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
 
-          <Footer />
-        </div>
-      </Router>
+            <Footer />
+          </div>
+        </Router>
+      </AuthProvider>
     </SettingsProvider>
   );
 }
