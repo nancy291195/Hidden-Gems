@@ -1,0 +1,74 @@
+import express from "express";
+import { createServer as createViteServer } from "vite";
+import path from "path";
+import { fileURLToPath } from "url";
+import Stripe from "stripe";
+import "dotenv/config";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+let stripeClient: Stripe | null = null;
+
+function getStripe(): Stripe {
+  if (!stripeClient) {
+    const key = process.env.STRIPE_SECRET_KEY;
+    if (!key) {
+      throw new Error("STRIPE_SECRET_KEY environment variable is required");
+    }
+    stripeClient = new Stripe(key);
+  }
+  return stripeClient;
+}
+
+async function startServer() {
+  const app = express();
+  const PORT = 3000;
+
+  app.use(express.json());
+
+  // Stripe Payment Intent API
+  app.post("/api/create-payment-intent", async (req, res) => {
+    try {
+      const { amount, currency = "usd", metadata } = req.body;
+      
+      const stripe = getStripe();
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: Math.round(amount * 100), // Stripe expects amount in cents
+        currency,
+        metadata,
+        automatic_payment_methods: {
+          enabled: true,
+        },
+      });
+
+      res.send({
+        clientSecret: paymentIntent.client_secret,
+      });
+    } catch (error: any) {
+      console.error("Stripe Error:", error);
+      res.status(500).send({ error: error.message });
+    }
+  });
+
+  // Vite middleware for development
+  if (process.env.NODE_ENV !== "production") {
+    const vite = await createViteServer({
+      server: { middlewareMode: true },
+      appType: "spa",
+    });
+    app.use(vite.middlewares);
+  } else {
+    const distPath = path.join(process.cwd(), "dist");
+    app.use(express.static(distPath));
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(distPath, "index.html"));
+    });
+  }
+
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
+
+startServer();

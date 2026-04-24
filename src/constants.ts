@@ -307,7 +307,9 @@ export const GUIDES: Guide[] = [
     lng: 36.3833,
     photos: [
       { caption: "The Milky Way over Hermel's juniper forests", gradient: "bg-linear-to-br from-indigo-950 to-black", url: "https://picsum.photos/seed/hermel-stars/1200/800" },
-      { caption: "The mysterious Hermel pyramid at sunset", gradient: "bg-linear-to-br from-orange-800 to-stone-900", url: "https://picsum.photos/seed/hermel-pyramid/1200/800" }
+      { caption: "The mysterious Hermel pyramid at sunset", gradient: "bg-linear-to-br from-orange-800 to-stone-900", url: "https://picsum.photos/seed/hermel-pyramid/1200/800" },
+      { caption: "Starlight hitting the ancient megalithic stones of Menjez", gradient: "bg-linear-to-br from-slate-700 to-indigo-900", url: "https://picsum.photos/seed/menjez-stones/1200/800" },
+      { caption: "The Assi River carving through the rugged Hermel valley", gradient: "bg-linear-to-br from-blue-700 to-stone-800", url: "https://picsum.photos/seed/assi-river/1200/800" }
     ],
     tours: [
       { name: "Hermel Dark Sky Camp & Pyramid", duration: "Overnight", price: 90, included: ["Camping Gear", "Dinner & Breakfast", "Guided Stargazing"] },
@@ -341,7 +343,9 @@ export const GUIDES: Guide[] = [
     lng: 35.3889,
     photos: [
       { caption: "Dawn at the Phoenician salt pans of Anfeh", gradient: "bg-linear-to-br from-cyan-400 to-blue-600", url: "https://picsum.photos/seed/anfeh-salt/1200/800" },
-      { caption: "Ancient olive groves in the heart of Koura", gradient: "bg-linear-to-br from-emerald-600 to-yellow-700", url: "https://picsum.photos/seed/olive-groves/1200/800" }
+      { caption: "Ancient olive groves in the heart of Koura", gradient: "bg-linear-to-br from-emerald-600 to-yellow-700", url: "https://picsum.photos/seed/olive-groves/1200/800" },
+      { caption: "Sunlight filtering through old olive branches in Amioun", gradient: "bg-linear-to-br from-green-300 to-emerald-800", url: "https://picsum.photos/seed/amioun-olive/1200/800" },
+      { caption: "Traditional Lebanese village breakfast in a local home", gradient: "bg-linear-to-br from-orange-100 to-orange-400", url: "https://picsum.photos/seed/lebanese-breakfast/1200/800" }
     ],
     tours: [
       { name: "Anfeh Coast & Salt Pans Dawn Tour", duration: "Half Day", price: 55, included: ["Breakfast", "Local Guide"] },
@@ -375,7 +379,9 @@ export const GUIDES: Guide[] = [
     lng: -7.9811,
     photos: [
       { caption: "A village perched high in the Atlas mountains", gradient: "bg-linear-to-br from-slate-400 to-orange-900", url: "https://picsum.photos/seed/atlas-village/1200/800" },
-      { caption: "Working with master weavers in the Medina", gradient: "bg-linear-to-br from-red-800 to-amber-900", url: "https://picsum.photos/seed/artisan-workshop/1200/800" }
+      { caption: "Working with master weavers in the Medina", gradient: "bg-linear-to-br from-red-800 to-amber-900", url: "https://picsum.photos/seed/artisan-workshop/1200/800" },
+      { caption: "Snow-capped peaks of the High Atlas at first light", gradient: "bg-linear-to-br from-blue-100 to-slate-400", url: "https://picsum.photos/seed/high-atlas-peaks/1200/800" },
+      { caption: "Drying saffron and spices in a hidden Medina courtyard", gradient: "bg-linear-to-br from-orange-400 to-red-600", url: "https://picsum.photos/seed/medina-spices/1200/800" }
     ],
     tours: [
       { name: "Hidden Marrakech Artisan Day", duration: "Full Day", price: 70, included: ["Lunch", "Workshop Access"] },
@@ -409,7 +415,9 @@ export const GUIDES: Guide[] = [
     lng: -5.2697,
     photos: [
       { caption: "Wild peaks of the Rif Mountains", gradient: "bg-linear-to-br from-emerald-700 to-blue-900", url: "https://picsum.photos/seed/rif-mountains/1200/800" },
-      { caption: "Forgotten Phoenician ruins on the coast", gradient: "bg-linear-to-br from-cyan-600 to-stone-700", url: "https://picsum.photos/seed/phoenician-ruins/1200/800" }
+      { caption: "Forgotten Phoenician ruins on the coast", gradient: "bg-linear-to-br from-cyan-600 to-stone-700", url: "https://picsum.photos/seed/phoenician-ruins/1200/800" },
+      { caption: "Morning mist over the blue rooftops of Chefchaouen", gradient: "bg-linear-to-br from-blue-200 to-blue-600", url: "https://picsum.photos/seed/chefchaouen-mist/1200/800" },
+      { caption: "A lonely goat path leading to high Rif pastures", gradient: "bg-linear-to-br from-green-200 to-stone-500", url: "https://picsum.photos/seed/rif-path/1200/800" }
     ],
     tours: [
       { name: "Rif Mountain Hidden Villages", duration: "Full Day", price: 60, included: ["Village Lunch", "Transport"] },
@@ -443,7 +451,9 @@ export const GUIDES: Guide[] = [
     lng: 135.8048,
     photos: [
       { caption: "Dawn mist in an ancient cedar forest", gradient: "bg-linear-to-br from-slate-400 to-emerald-950", url: "https://picsum.photos/seed/cedar-forest/1200/800" },
-      { caption: "A mountain temple untouched by time", gradient: "bg-linear-to-br from-stone-500 to-indigo-900", url: "https://picsum.photos/seed/mountain-temple/1200/800" }
+      { caption: "A mountain temple untouched by time", gradient: "bg-linear-to-br from-stone-500 to-indigo-900", url: "https://picsum.photos/seed/mountain-temple/1200/800" },
+      { caption: "Moss-covered lanterns on a stone path to a hidden shrine", gradient: "bg-linear-to-br from-green-800 to-black", url: "https://picsum.photos/seed/hidden-shrine/1200/800" },
+      { caption: "A private tea ceremony in a silent forest clearing", gradient: "bg-linear-to-br from-emerald-100 to-slate-400", url: "https://picsum.photos/seed/forest-tea/1200/800" }
     ],
     tours: [
       { name: "Sacred Forest Dawn Walk", duration: "Half Day", price: 95, included: ["Traditional Breakfast", "Meditation Session"] },
@@ -477,7 +487,9 @@ export const GUIDES: Guide[] = [
     lng: 127.6809,
     photos: [
       { caption: "The mysterious underwater ruins of Yonaguni", gradient: "bg-linear-to-br from-blue-900 to-teal-950", url: "https://picsum.photos/seed/yonaguni/1200/800" },
-      { caption: "Crystal clear waters of a remote Ryukyu beach", gradient: "bg-linear-to-br from-cyan-400 to-blue-600", url: "https://picsum.photos/seed/ryukyu-beach/1200/800" }
+      { caption: "Crystal clear waters of a remote Ryukyu beach", gradient: "bg-linear-to-br from-cyan-400 to-blue-600", url: "https://picsum.photos/seed/ryukyu-beach/1200/800" },
+      { caption: "Ancient Ryukyu spirits dancing in the island breeze", gradient: "bg-linear-to-br from-orange-400 to-white", url: "https://picsum.photos/seed/ryukyu-spirits/1200/800" },
+      { caption: "Sunset over the uninhabited shores of the southern chain", gradient: "bg-linear-to-br from-red-600 to-black", url: "https://picsum.photos/seed/okinawa-sunset/1200/800" }
     ],
     tours: [
       { name: "Remote Ryukyu Island Day", duration: "Full Day", price: 120, included: ["Boat Transport", "Local Lunch", "Snorkel Gear"] },
@@ -511,7 +523,9 @@ export const GUIDES: Guide[] = [
     lng: 44.8271,
     photos: [
       { caption: "A hidden courtyard in the heart of Old Tbilisi", gradient: "bg-linear-to-br from-amber-600 to-stone-800", url: "https://picsum.photos/seed/tbilisi-courtyard/1200/800" },
-      { caption: "Ancient qvevri in a family-run Kartli vineyard", gradient: "bg-linear-to-br from-red-900 to-orange-950", url: "https://picsum.photos/seed/kartli-wine/1200/800" }
+      { caption: "Ancient qvevri in a family-run Kartli vineyard", gradient: "bg-linear-to-br from-red-900 to-orange-950", url: "https://picsum.photos/seed/kartli-wine/1200/800" },
+      { caption: "Afternoon sun in a stained-glass window of a hidden church", gradient: "bg-linear-to-br from-blue-400 to-purple-800", url: "https://picsum.photos/seed/tbilisi-glass/1200/800" },
+      { caption: "The rough texture of a qvevri in a hundred-year-old cellar", gradient: "bg-linear-to-br from-stone-500 to-red-950", url: "https://picsum.photos/seed/qvevri-cellar/1200/800" }
     ],
     tours: [
       { name: "Hidden Tbilisi Deep Walk", duration: "Full Day", price: 75, included: ["Wine Tasting", "History Talk"] },
@@ -545,7 +559,9 @@ export const GUIDES: Guide[] = [
     lng: 43.4167,
     photos: [
       { caption: "Wild camping in the Racha highlands", gradient: "bg-linear-to-br from-indigo-900 to-emerald-950", url: "https://picsum.photos/seed/racha-camping/1200/800" },
-      { caption: "Deep inside the unmapped chambers of Prometheus Cave", gradient: "bg-linear-to-br from-slate-800 to-blue-950", url: "https://picsum.photos/seed/cave-exploration/1200/800" }
+      { caption: "Deep inside the unmapped chambers of Prometheus Cave", gradient: "bg-linear-to-br from-slate-800 to-blue-950", url: "https://picsum.photos/seed/cave-exploration/1200/800" },
+      { caption: "Horses grazing in the wild flower meadows of Racha", gradient: "bg-linear-to-br from-green-400 to-slate-200", url: "https://picsum.photos/seed/racha-horses/1200/800" },
+      { caption: "Limestone cliffs guarding the secrets of western Georgia", gradient: "bg-linear-to-br from-stone-400 to-blue-700", url: "https://picsum.photos/seed/georgia-cliffs/1200/800" }
     ],
     tours: [
       { name: "Racha Highland Wild Camp", duration: "Overnight", price: 80, included: ["Camping Gear", "All Meals", "4WD Transport"] },
@@ -579,7 +595,9 @@ export const GUIDES: Guide[] = [
     lng: -70.0212,
     photos: [
       { caption: "Traditional weaving on the shores of Titicaca", gradient: "bg-linear-to-br from-pink-600 to-blue-800", url: "https://picsum.photos/seed/titicaca-weaving/1200/800" },
-      { caption: "A hidden pre-Inca site on the Altiplano", gradient: "bg-linear-to-br from-orange-700 to-stone-800", url: "https://picsum.photos/seed/altiplano-ruins/1200/800" }
+      { caption: "A hidden pre-Inca site on the Altiplano", gradient: "bg-linear-to-br from-orange-700 to-stone-800", url: "https://picsum.photos/seed/altiplano-ruins/1200/800" },
+      { caption: "A local boat crossing the mirror-like Titicaca waters", gradient: "bg-linear-to-br from-blue-200 to-cyan-600", url: "https://picsum.photos/seed/titicaca-boat/1200/800" },
+      { caption: "Pink flamingos on a remote Altiplano lagoon", gradient: "bg-linear-to-br from-pink-300 to-indigo-800", url: "https://picsum.photos/seed/altiplano-flamingos/1200/800" }
     ],
     tours: [
       { name: "Titicaca Hidden Island Communities", duration: "Full Day", price: 85, included: ["Boat Transport", "Family Lunch"] },
@@ -613,7 +631,9 @@ export const GUIDES: Guide[] = [
     lng: -77.8728,
     photos: [
       { caption: "The massive stone walls of Kuelap fortress", gradient: "bg-linear-to-br from-stone-600 to-emerald-900", url: "https://picsum.photos/seed/kuelap/1200/800" },
-      { caption: "Ancient sarcophagi perched on a sheer cliff", gradient: "bg-linear-to-br from-slate-500 to-stone-800", url: "https://picsum.photos/seed/sarcophagi/1200/800" }
+      { caption: "Ancient sarcophagi perched on a sheer cliff", gradient: "bg-linear-to-br from-slate-500 to-stone-800", url: "https://picsum.photos/seed/sarcophagi/1200/800" },
+      { caption: "Mist swirling around the circular towers of Kuelap", gradient: "bg-linear-to-br from-slate-200 to-emerald-800", url: "https://picsum.photos/seed/kuelap-mist/1200/800" },
+      { caption: "Rare orchids blooming in the Peruvian cloud forest", gradient: "bg-linear-to-br from-pink-500 to-green-800", url: "https://picsum.photos/seed/cloud-forest-orchids/1200/800" }
     ],
     tours: [
       { name: "Kuelap & Hidden Chachapoya Ruins", duration: "Full Day", price: 110, included: ["Lunch", "Entry Fees"] },
@@ -647,7 +667,9 @@ export const GUIDES: Guide[] = [
     lng: 37.4667,
     photos: [
       { caption: "The royal castles of Gondar at sunset", gradient: "bg-linear-to-br from-orange-800 to-stone-900", url: "https://picsum.photos/seed/gondar-castles/1200/800" },
-      { caption: "The dramatic depths of the Blue Nile gorge", gradient: "bg-linear-to-br from-stone-500 to-blue-900", url: "https://picsum.photos/seed/blue-nile/1200/800" }
+      { caption: "The dramatic depths of the Blue Nile gorge", gradient: "bg-linear-to-br from-stone-500 to-blue-900", url: "https://picsum.photos/seed/blue-nile/1200/800" },
+      { caption: "A monk reading ancient scrolls by candlelight in a Tana monastery", gradient: "bg-linear-to-br from-amber-800 to-black", url: "https://picsum.photos/seed/tana-monk/1200/800" },
+      { caption: "The jagged rocky silhouette of the Simien mountains at dawn", gradient: "bg-linear-to-br from-indigo-900 to-slate-400", url: "https://picsum.photos/seed/simien-jagged/1200/800" }
     ],
     tours: [
       { name: "Gondar Royal Heritage & Hidden Churches", duration: "Full Day", price: 85, included: ["Entry Fees", "Lunch"] },
@@ -681,7 +703,9 @@ export const GUIDES: Guide[] = [
     lng: 42.1278,
     photos: [
       { caption: "The colorful alleyways of Harar's walled city", gradient: "bg-linear-to-br from-pink-500 to-amber-600", url: "https://picsum.photos/seed/harar-alley/1200/800" },
-      { caption: "The ancient ritual of hyena feeding", gradient: "bg-linear-to-br from-indigo-900 to-black", url: "https://picsum.photos/seed/hyena-feeding/1200/800" }
+      { caption: "The ancient ritual of hyena feeding", gradient: "bg-linear-to-br from-indigo-900 to-black", url: "https://picsum.photos/seed/hyena-feeding/1200/800" },
+      { caption: "Intricate patterns of traditional Harari basket-weaving", gradient: "bg-linear-to-br from-red-600 to-yellow-400", url: "https://picsum.photos/seed/harari-basket/1200/800" },
+      { caption: "Twilight falling over Harar's city of a hundred towers", gradient: "bg-linear-to-br from-purple-800 to-orange-400", url: "https://picsum.photos/seed/harar-twilight/1200/800" }
     ],
     tours: [
       { name: "Harar Old City Deep Walk", duration: "Full Day", price: 80, included: ["Coffee Ceremony", "Lunch"] },
@@ -715,7 +739,9 @@ export const GUIDES: Guide[] = [
     lng: -7.9135,
     photos: [
       { caption: "Ancient megalithic stones in the Alentejo plains", gradient: "bg-linear-to-br from-stone-400 to-emerald-900", url: "https://picsum.photos/seed/alentejo-stones/1200/800" },
-      { caption: "A hidden cove on the wild Atlantic coast", gradient: "bg-linear-to-br from-blue-600 to-cyan-900", url: "https://picsum.photos/seed/portugal-beach/1200/800" }
+      { caption: "A hidden cove on the wild Atlantic coast", gradient: "bg-linear-to-br from-blue-600 to-cyan-900", url: "https://picsum.photos/seed/portugal-beach/1200/800" },
+      { caption: "A shepherd guiding sheep through an Alentejo cork forest", gradient: "bg-linear-to-br from-green-800 to-stone-500", url: "https://picsum.photos/seed/alentejo-shepherd/1200/800" },
+      { caption: "The orange glow of sunset on a local marble quarry", gradient: "bg-linear-to-br from-orange-400 to-rose-900", url: "https://picsum.photos/seed/marble-quarry/1200/800" }
     ],
     tours: [
       { name: "Alentejo Megalithic & Village Day", duration: "Full Day", price: 70, included: ["Lunch", "Entry Fees"] },
@@ -749,7 +775,9 @@ export const GUIDES: Guide[] = [
     lng: -8.6291,
     photos: [
       { caption: "A schist village built into the mountain rock", gradient: "bg-linear-to-br from-stone-600 to-slate-900", url: "https://picsum.photos/seed/schist-village/1200/800" },
-      { caption: "Steep wine terraces of the Douro Valley", gradient: "bg-linear-to-br from-emerald-700 to-orange-900", url: "https://picsum.photos/seed/douro-valley/1200/800" }
+      { caption: "Steep wine terraces of the Douro Valley", gradient: "bg-linear-to-br from-emerald-700 to-orange-900", url: "https://picsum.photos/seed/douro-valley/1200/800" },
+      { caption: "Gnarled vines surviving the winter cold of Trás-os-Montes", gradient: "bg-linear-to-br from-slate-400 to-brown-900", url: "https://picsum.photos/seed/winter-vines/1200/800" },
+      { caption: "An ancient stone bridge over a rushing northern stream", gradient: "bg-linear-to-br from-stone-300 to-blue-800", url: "https://picsum.photos/seed/stone-bridge/1200/800" }
     ],
     tours: [
       { name: "Schist Village & Ancient Terraces", duration: "Full Day", price: 85, included: ["Wine Tasting", "Lunch"] },
@@ -783,7 +811,9 @@ export const GUIDES: Guide[] = [
     lng: -75.6378,
     photos: [
       { caption: "A hummingbird in the misty cloud forest", gradient: "bg-linear-to-br from-teal-400 to-emerald-900", url: "https://picsum.photos/seed/hummingbird/1200/800" },
-      { caption: "The towering wax palms of Cocora Valley", gradient: "bg-linear-to-br from-emerald-500 to-blue-400", url: "https://picsum.photos/seed/cocora/1200/800" }
+      { caption: "The towering wax palms of Cocora Valley", gradient: "bg-linear-to-br from-emerald-500 to-blue-400", url: "https://picsum.photos/seed/cocora/1200/800" },
+      { caption: "Deep red coffee cherries ripening under the Colombian sun", gradient: "bg-linear-to-br from-red-600 to-green-700", url: "https://picsum.photos/seed/coffee-cherries/1200/800" },
+      { caption: "A sudden rainbow over the rolling Quindío coffee hills", gradient: "bg-linear-to-br from-blue-100 to-green-600", url: "https://picsum.photos/seed/coffee-rainbow/1200/800" }
     ],
     tours: [
       { name: "Family Coffee Finca Immersion", duration: "Full Day", price: 75, included: ["Coffee Tasting", "Lunch"] },
@@ -817,7 +847,9 @@ export const GUIDES: Guide[] = [
     lng: -74.1990,
     photos: [
       { caption: "A pristine beach with no name", gradient: "bg-linear-to-br from-cyan-400 to-blue-600", url: "https://picsum.photos/seed/colombia-beach/1200/800" },
-      { caption: "Meeting with the Kogui in the Sierra Nevada", gradient: "bg-linear-to-br from-emerald-800 to-stone-800", url: "https://picsum.photos/seed/kogui/1200/800" }
+      { caption: "Meeting with the Kogui in the Sierra Nevada", gradient: "bg-linear-to-br from-emerald-800 to-stone-800", url: "https://picsum.photos/seed/kogui/1200/800" },
+      { caption: "Deep mangroves reflecting in the still Caribbean waters", gradient: "bg-linear-to-br from-teal-600 to-blue-900", url: "https://picsum.photos/seed/mangroves/1200/800" },
+      { caption: "The rhythmic sound of waves on a secret white-sand beach", gradient: "bg-linear-to-br from-cyan-200 to-blue-500", url: "https://picsum.photos/seed/secret-beach/1200/800" }
     ],
     tours: [
       { name: "Kogui Community & Sierra Nevada", duration: "Full Day", price: 80, included: ["Community Gift", "Lunch"] },
@@ -851,7 +883,9 @@ export const GUIDES: Guide[] = [
     lng: 19.7750,
     photos: [
       { caption: "The dramatic peaks of the Accursed Mountains", gradient: "bg-linear-to-br from-slate-400 to-indigo-900", url: "https://picsum.photos/seed/albanian-alps/1200/800" },
-      { caption: "A traditional stone tower in Theth", gradient: "bg-linear-to-br from-stone-600 to-slate-900", url: "https://picsum.photos/seed/stone-tower/1200/800" }
+      { caption: "A traditional stone tower in Theth", gradient: "bg-linear-to-br from-stone-600 to-slate-900", url: "https://picsum.photos/seed/stone-tower/1200/800" },
+      { caption: "A cold mountain stream in the heart of the Albanian Alps", gradient: "bg-linear-to-br from-blue-100 to-slate-500", url: "https://picsum.photos/seed/mountain-stream/1200/800" },
+      { caption: "A golden eagle soaring over the high Valbona pass", gradient: "bg-linear-to-br from-blue-200 to-stone-800", url: "https://picsum.photos/seed/valbona-eagle/1200/800" }
     ],
     tours: [
       { name: "Theth Valley Hidden Walk", duration: "Full Day", price: 60, included: ["Lunch", "History Talk"] },
@@ -885,7 +919,9 @@ export const GUIDES: Guide[] = [
     lng: 20.0000,
     photos: [
       { caption: "The ancient ruins of Butrint", gradient: "bg-linear-to-br from-emerald-800 to-stone-700", url: "https://picsum.photos/seed/butrint/1200/800" },
-      { caption: "Crystal clear coves of the Albanian Riviera", gradient: "bg-linear-to-br from-cyan-400 to-blue-600", url: "https://picsum.photos/seed/albania-cove/1200/800" }
+      { caption: "Crystal clear coves of the Albanian Riviera", gradient: "bg-linear-to-br from-cyan-400 to-blue-600", url: "https://picsum.photos/seed/albania-cove/1200/800" },
+      { caption: "The view from a wooden window in the city of a thousand windows", gradient: "bg-linear-to-br from-orange-200 to-stone-600", url: "https://picsum.photos/seed/thousand-windows/1200/800" },
+      { caption: "Fishing boats resting on the turquoise water of a hidden bay", gradient: "bg-linear-to-br from-teal-400 to-blue-800", url: "https://picsum.photos/seed/fishing-boats/1200/800" }
     ],
     tours: [
       { name: "Albanian Riviera Hidden Coves", duration: "Full Day", price: 55, included: ["Boat Access", "Picnic"] },
@@ -919,7 +955,9 @@ export const GUIDES: Guide[] = [
     lng: 115.1889,
     photos: [
       { caption: "A sacred ceremony at a hidden water temple", gradient: "bg-linear-to-br from-teal-500 to-emerald-900", url: "https://picsum.photos/seed/bali-ceremony/1200/800" },
-      { caption: "The sulfurous crater of Ijen volcano", gradient: "bg-linear-to-br from-cyan-400 to-blue-900", url: "https://picsum.photos/seed/ijen/1200/800" }
+      { caption: "The sulfurous crater of Ijen volcano", gradient: "bg-linear-to-br from-cyan-400 to-blue-900", url: "https://picsum.photos/seed/ijen/1200/800" },
+      { caption: "A dragonfly hovering over a silent Balinese rice field", gradient: "bg-linear-to-br from-green-200 to-emerald-800", url: "https://picsum.photos/seed/bali-dragonfly/1200/800" },
+      { caption: "Thick incense smoke rising from a morning flower offering", gradient: "bg-linear-to-br from-purple-200 to-orange-400", url: "https://picsum.photos/seed/bali-incense/1200/800" }
     ],
     tours: [
       { name: "Bali Highland Ceremony & Village", duration: "Full Day", price: 65, included: ["Ceremony Access", "Lunch"] },
@@ -953,7 +991,9 @@ export const GUIDES: Guide[] = [
     lng: 119.8962,
     photos: [
       { caption: "The unique architecture of Toraja houses", gradient: "bg-linear-to-br from-orange-700 to-stone-900", url: "https://picsum.photos/seed/toraja/1200/800" },
-      { caption: "A Komodo dragon on a deserted beach", gradient: "bg-linear-to-br from-stone-500 to-emerald-900", url: "https://picsum.photos/seed/komodo/1200/800" }
+      { caption: "A Komodo dragon on a deserted beach", gradient: "bg-linear-to-br from-stone-500 to-emerald-900", url: "https://picsum.photos/seed/komodo/1200/800" },
+      { caption: "Intricate spiritual carvings on a Torajan family tomb", gradient: "bg-linear-to-br from-red-900 to-black", url: "https://picsum.photos/seed/toraja-carvings/1200/800" },
+      { caption: "The lone orange sail of a Phinisi boat on the horizon", gradient: "bg-linear-to-br from-orange-400 to-blue-900", url: "https://picsum.photos/seed/phinisi-sail/1200/800" }
     ],
     tours: [
       { name: "Toraja Ceremony Access & Village", duration: "2 Days", price: 90, included: ["Homestay", "All Meals"] },
@@ -987,7 +1027,9 @@ export const GUIDES: Guide[] = [
     lng: 39.2026,
     photos: [
       { caption: "Intricate carved doors of Old Stone Town", gradient: "bg-linear-to-br from-stone-600 to-amber-900", url: "https://picsum.photos/seed/stonetown/1200/800" },
-      { caption: "A traditional dhow sailing at dawn", gradient: "bg-linear-to-br from-cyan-400 to-blue-900", url: "https://picsum.photos/seed/dhow/1200/800" }
+      { caption: "A traditional dhow sailing at dawn", gradient: "bg-linear-to-br from-cyan-400 to-blue-900", url: "https://picsum.photos/seed/dhow/1200/800" },
+      { caption: "The sharp scent of cloves drying on a Stone Town roof", gradient: "bg-linear-to-br from-orange-800 to-stone-900", url: "https://picsum.photos/seed/clove-drying/1200/800" },
+      { caption: "A bright turquoise starfish on a pure white sandbank", gradient: "bg-linear-to-br from-blue-200 to-white", url: "https://picsum.photos/seed/starfish-sandbank/1200/800" }
     ],
     tours: [
       { name: "Stone Town Hidden Quarters Walk", duration: "Full Day", price: 70, included: ["Lunch", "History Talk"] },
@@ -1021,7 +1063,9 @@ export const GUIDES: Guide[] = [
     lng: 35.4833,
     photos: [
       { caption: "A walking safari in the Maasai Steppe", gradient: "bg-linear-to-br from-emerald-700 to-orange-900", url: "https://picsum.photos/seed/maasai-steppe/1200/800" },
-      { caption: "Elephants in the wild Tarangire wilderness", gradient: "bg-linear-to-br from-stone-500 to-emerald-900", url: "https://picsum.photos/seed/tarangire/1200/800" }
+      { caption: "Elephants in the wild Tarangire wilderness", gradient: "bg-linear-to-br from-stone-500 to-emerald-900", url: "https://picsum.photos/seed/tarangire/1200/800" },
+      { caption: "The vast golden silence of the Ngorongoro crater floor", gradient: "bg-linear-to-br from-yellow-100 to-orange-300", url: "https://picsum.photos/seed/ngorongoro-silence/1200/800" },
+      { caption: "A Maasai warrior watching the sunset over the endless plains", gradient: "bg-linear-to-br from-red-600 to-black", url: "https://picsum.photos/seed/maasai-sunset/1200/800" }
     ],
     tours: [
       { name: "Tarangire Walking Safari", duration: "Full Day", price: 95, included: ["Safety Scout", "Lunch"] },

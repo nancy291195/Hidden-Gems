@@ -74,10 +74,10 @@ export default function Chat() {
       ];
 
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-1.5-flash",
         contents,
         config: {
-          systemInstruction: `${SYSTEM_PROMPT}\n\nIMPORTANT: The user's preferred language is ${language}. Please respond in ${language}.`,
+          systemInstruction: `${SYSTEM_PROMPT}\n\nIMPORTANT: Always respond in English unless the user explicitly switches the language in the app settings. Current preferred language: English.`,
         }
       });
       

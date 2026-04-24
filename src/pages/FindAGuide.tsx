@@ -18,10 +18,15 @@ export default function FindAGuide() {
   }, [location.state]);
 
   const countries = Array.from(new Set(GUIDES.map((g) => g.country))).map(
-    (country) => ({
-      name: country,
-      flag: GUIDES.find((g) => g.country === country)?.flag || "📍",
-    })
+    (country) => {
+      const countryGuides = GUIDES.filter((g) => g.country === country);
+      return {
+        name: country,
+        flag: countryGuides[0]?.flag || "📍",
+        guideImages: countryGuides.slice(0, 3).map(g => g.image),
+        totalGuides: countryGuides.length
+      };
+    }
   );
 
   const filteredGuides = GUIDES.filter((g) => g.country === selectedCountry);
@@ -56,18 +61,37 @@ export default function FindAGuide() {
                   <button
                     key={country.name}
                     onClick={() => setSelectedCountry(country.name)}
-                    className="group glass-panel p-8 rounded-[32px] text-left hover:bg-brand-olive hover:text-brand-cream transition-all duration-500 flex items-center justify-between"
+                    className="group glass-panel p-6 rounded-[40px] text-left hover:bg-brand-olive hover:text-brand-cream transition-all duration-500 flex flex-col gap-6"
                   >
-                    <div className="flex items-center gap-4">
-                      <span className="text-4xl">{country.flag}</span>
-                      <div>
-                        <h3 className="text-xl font-serif font-bold">{country.name}</h3>
-                        <p className="text-xs opacity-60 uppercase tracking-widest font-medium">
-                          {t("find.guides_count", { count: GUIDES.filter(g => g.country === country.name).length })}
-                        </p>
+                    <div className="flex items-center justify-between w-full">
+                      <div className="flex items-center gap-4">
+                        <span className="text-4xl group-hover:scale-110 transition-transform">{country.flag}</span>
+                        <div>
+                          <h3 className="text-xl font-serif font-bold group-hover:text-brand-gold transition-colors">{country.name}</h3>
+                          <p className="text-[10px] opacity-60 uppercase tracking-widest font-bold">
+                            {t("find.guides_count", { count: country.totalGuides })}
+                          </p>
+                        </div>
                       </div>
+                      <ChevronRight className="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
                     </div>
-                    <ChevronRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                    <div className="flex -space-x-4">
+                      {country.guideImages.map((img, idx) => (
+                        <div 
+                          key={idx} 
+                          className="w-12 h-12 rounded-2xl border-4 border-brand-cream group-hover:border-brand-olive/20 overflow-hidden transition-all shadow-md"
+                          style={{ zIndex: 3 - idx }}
+                        >
+                          <img src={img} alt="Guide" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                        </div>
+                      ))}
+                      {country.totalGuides > 3 && (
+                        <div className="w-12 h-12 rounded-2xl border-4 border-brand-cream group-hover:border-brand-olive/20 bg-brand-gold flex items-center justify-center text-[10px] font-bold text-brand-ink z-0 shadow-md">
+                          +{country.totalGuides - 3}
+                        </div>
+                      )}
+                    </div>
                   </button>
                 ))}
               </div>
