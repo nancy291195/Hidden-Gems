@@ -398,11 +398,6 @@ function Footer() {
       
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-brand-olive/5 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-xs text-brand-ink/40">{t("footer.rights")}</p>
-        <div className="flex gap-6">
-          <a href="#" className="text-xs text-brand-ink/40 hover:text-brand-gold transition-colors">Instagram</a>
-          <a href="#" className="text-xs text-brand-ink/40 hover:text-brand-gold transition-colors">Twitter</a>
-          <a href="#" className="text-xs text-brand-ink/40 hover:text-brand-gold transition-colors">LinkedIn</a>
-        </div>
       </div>
     </footer>
   );
@@ -424,7 +419,7 @@ export default function App() {
               <Route path="/hidden-gems" element={<HiddenGems />} />
               <Route path="/how-it-works" element={<HowItWorks />} />
               <Route path="/world-map" element={<WorldMap />} />
-              <Route path="/guide-application" element={<GuideApplicationSuccess />} />
+              <Route path="/guide-application" element={<GuideApplication />} />
               <Route path="/help-centre" element={<HelpCentre />} />
               <Route path="/safety-guidelines" element={<SafetyGuidelines />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />

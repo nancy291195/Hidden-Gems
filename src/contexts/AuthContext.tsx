@@ -37,9 +37,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
     setUser({
-      name: "Explorer",
+      name: "Nancy",
       email: email,
-      initials: "E"
+      initials: "N"
     });
   }, []);
 
