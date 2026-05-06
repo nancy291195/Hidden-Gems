@@ -350,133 +350,146 @@ export default function GuideProfile() {
                 <h3 className="text-2xl font-serif mb-8">{t("profile.secure_booking")}</h3>
                 
                 <div className="space-y-6">
-                  <AnimatePresence mode="wait">
-                    {isSuccess ? (
-                      <motion.div
-                        key="success"
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="text-center py-8"
-                      >
-                        <div className="w-20 h-20 bg-brand-olive text-brand-cream rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
-                          <Check className="w-10 h-10" />
-                        </div>
-                        <h4 className="text-2xl font-serif mb-2">{t("profile.booking_confirmed")}</h4>
-                        <p className="text-sm text-brand-ink/60 mb-8">
-                          {t("profile.booking_success_msg", { name: guide.name.split(' ')[0] })}
-                        </p>
-                        <Link 
-                          to="/my-bookings"
-                          className="inline-block px-8 py-4 bg-brand-olive text-brand-cream rounded-full font-bold hover:scale-105 transition-all"
+                  <div className="space-y-6">
+                    <div className="space-y-2">
+                      <label className="micro-label">{t("profile.select_package")}</label>
+                        <select 
+                          value={bookingData.tour}
+                          onChange={(e) => setBookingData({...bookingData, tour: e.target.value})}
+                          className="w-full p-4 bg-brand-cream rounded-2xl border border-brand-olive/10 focus:border-brand-gold outline-hidden transition-all text-sm appearance-none"
                         >
-                          View my bookings
-                        </Link>
-                      </motion.div>
-                    ) : (
-                      <motion.div 
-                        key="booking-form"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="space-y-6"
-                      >
-                        <div className="space-y-2">
-                          <label className="micro-label">{t("profile.select_package")}</label>
-                            <select 
-                              value={bookingData.tour}
-                              onChange={(e) => setBookingData({...bookingData, tour: e.target.value})}
-                              className="w-full p-4 bg-brand-cream rounded-2xl border border-brand-olive/10 focus:border-brand-gold outline-hidden transition-all text-sm appearance-none"
-                            >
-                              <option value="">{t("profile.select_package")}</option>
-                              {guide.tours.map((t, i) => (
-                                <option key={i} value={t.name}>{t.name} — {formatPrice(t.price)}</option>
-                              ))}
-                            </select>
-                        </div>
+                          <option value="">{t("profile.select_package")}</option>
+                          {guide.tours.map((t, i) => (
+                            <option key={i} value={t.name}>{t.name} — {formatPrice(t.price)}</option>
+                          ))}
+                        </select>
+                    </div>
 
-                        <div className="grid grid-cols-2 gap-4">
-                          <div className="space-y-2">
-                            <label className="micro-label">{t("profile.date")}</label>
-                            <div className="relative">
-                              <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-ink/30" />
-                              <input 
-                                type="date" 
-                                value={bookingData.date}
-                                onChange={(e) => setBookingData({...bookingData, date: e.target.value})}
-                                className="w-full p-4 pl-12 bg-brand-cream rounded-2xl border border-brand-olive/10 focus:border-brand-gold outline-hidden transition-all text-sm"
-                              />
-                            </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <label className="micro-label">{t("profile.date")}</label>
+                        <div className="relative">
+                          <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-ink/30" />
+                          <input 
+                            type="date" 
+                            value={bookingData.date}
+                            onChange={(e) => setBookingData({...bookingData, date: e.target.value})}
+                            className="w-full p-4 pl-12 bg-brand-cream rounded-2xl border border-brand-olive/10 focus:border-brand-gold outline-hidden transition-all text-sm"
+                          />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <label className="micro-label">{t("profile.travellers")}</label>
+                        <div className="relative">
+                          <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-ink/30" />
+                          <select 
+                            value={bookingData.people}
+                            onChange={(e) => setBookingData({...bookingData, people: e.target.value})}
+                            className="w-full p-4 pl-12 bg-brand-cream rounded-2xl border border-brand-olive/10 focus:border-brand-gold outline-hidden transition-all text-sm"
+                          >
+                            {[1,2,3,4,5,6,7,8].map(n => (
+                              <option key={n} value={n}>{n} {n === 1 ? t("profile.person") : t("profile.people")}</option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <textarea 
+                      placeholder={t("profile.message")}
+                      value={bookingData.message}
+                      onChange={(e) => setBookingData({...bookingData, message: e.target.value})}
+                      className="w-full p-4 bg-brand-cream rounded-2xl border border-brand-olive/10 focus:border-brand-gold outline-hidden transition-all text-sm h-24 resize-none"
+                    />
+
+                    <div className="pt-4 border-t border-brand-olive/10">
+                      {!stripePromise ? (
+                        <div className="p-6 bg-amber-50 border border-amber-100 rounded-3xl flex flex-col items-center text-center gap-4">
+                          <AlertCircle className="w-8 h-8 text-amber-500" />
+                          <div>
+                            <p className="font-bold text-brand-ink text-sm mb-1">Stripe Not Configured</p>
+                            <p className="text-[10px] text-brand-ink/60">Please add your Stripe Publishable Key to environment variables to enable "Confirm & Pay".</p>
                           </div>
-                          <div className="space-y-2">
-                            <label className="micro-label">{t("profile.travellers")}</label>
-                            <div className="relative">
-                              <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-ink/30" />
-                              <select 
-                                value={bookingData.people}
-                                onChange={(e) => setBookingData({...bookingData, people: e.target.value})}
-                                className="w-full p-4 pl-12 bg-brand-cream rounded-2xl border border-brand-olive/10 focus:border-brand-gold outline-hidden transition-all text-sm"
-                              >
-                                {[1,2,3,4,5,6,7,8].map(n => (
-                                  <option key={n} value={n}>{n} {n === 1 ? t("profile.person") : t("profile.people")}</option>
-                                ))}
-                              </select>
-                            </div>
-                          </div>
                         </div>
-
-                        <textarea 
-                          placeholder={t("profile.message")}
-                          value={bookingData.message}
-                          onChange={(e) => setBookingData({...bookingData, message: e.target.value})}
-                          className="w-full p-4 bg-brand-cream rounded-2xl border border-brand-olive/10 focus:border-brand-gold outline-hidden transition-all text-sm h-24 resize-none"
-                        />
-
-                        <div className="pt-4 border-t border-brand-olive/10">
-                          {!stripePromise ? (
-                            <div className="p-6 bg-amber-50 border border-amber-100 rounded-3xl flex flex-col items-center text-center gap-4">
-                              <AlertCircle className="w-8 h-8 text-amber-500" />
-                              <div>
-                                <p className="font-bold text-brand-ink text-sm mb-1">Stripe Not Configured</p>
-                                <p className="text-[10px] text-brand-ink/60">Please add your Stripe Publishable Key to environment variables to enable "Confirm & Pay".</p>
-                              </div>
-                            </div>
-                          ) : (
-                            <Elements 
-                              stripe={stripePromise} 
-                              options={{
-                                mode: 'payment',
-                                amount: Math.max(1, Math.round((priceBreakdown?.total || 1) * 100)),
-                                currency: 'usd',
-                                appearance: {
-                                  theme: 'stripe',
-                                  variables: {
-                                    colorPrimary: '#A68B5B',
-                                    colorBackground: '#FDFBF2',
-                                    colorText: '#1A1D1A',
-                                    borderRadius: '16px',
-                                  }
-                                }
-                              }}
-                            >
-                              <StripeBookingForm 
-                                amount={priceBreakdown?.total || 0}
-                                guideName={guide.name}
-                                bookingData={bookingData}
-                                setBookingData={setBookingData}
-                                onSuccess={handlePaymentSuccess}
-                                isDisabled={false}
-                              />
-                            </Elements>
-                          )}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                      ) : (
+                        <Elements 
+                          stripe={stripePromise} 
+                          options={{
+                            mode: 'payment',
+                            amount: Math.max(1, Math.round((priceBreakdown?.total || 1) * 100)),
+                            currency: 'usd',
+                            appearance: {
+                              theme: 'stripe',
+                              variables: {
+                                colorPrimary: '#A68B5B',
+                                colorBackground: '#FDFBF2',
+                                colorText: '#1A1D1A',
+                                borderRadius: '16px',
+                              }
+                            }
+                          }}
+                        >
+                          <StripeBookingForm 
+                            amount={priceBreakdown?.total || 0}
+                            guideName={guide.name}
+                            bookingData={bookingData}
+                            setBookingData={setBookingData}
+                            onSuccess={handlePaymentSuccess}
+                            isDisabled={false}
+                          />
+                        </Elements>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Success Popup */}
+      <AnimatePresence>
+        {isSuccess && (
+          <div className="fixed inset-0 z-100 flex items-center justify-center p-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsSuccess(false)}
+              className="absolute inset-0 bg-brand-ink/20 backdrop-blur-md"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-sm glass-panel bg-white p-12 rounded-[48px] text-center shadow-2xl border-brand-gold/10"
+            >
+              <div className="w-20 h-20 bg-brand-olive text-brand-cream rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl">
+                <Check className="w-10 h-10" />
+              </div>
+              <h2 className="text-3xl font-serif font-bold mb-4">{t("profile.booking_confirmed")}</h2>
+              <p className="text-brand-ink/60 mb-8 leading-relaxed">
+                {t("profile.booking_success_msg", { name: guide.name.split(' ')[0] })}
+              </p>
+              <div className="space-y-4">
+                <Link 
+                  to="/my-bookings"
+                  className="block w-full py-4 bg-brand-olive text-brand-cream rounded-full font-bold hover:scale-105 transition-all shadow-lg"
+                >
+                  View My Bookings
+                </Link>
+                <button 
+                  onClick={() => setIsSuccess(false)}
+                  className="block w-full py-4 text-brand-ink/40 font-bold hover:text-brand-ink transition-all"
+                >
+                  Back to Profile
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
